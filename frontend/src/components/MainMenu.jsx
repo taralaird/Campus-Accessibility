@@ -7,6 +7,9 @@ function MainMenu() {
         <div>
             <h1>Campus Accessibility</h1>
             <Link to="/createReport" ><Button variant="info">Create Account</Button></Link>
+            <br />
+            <br />
+            <Link to="/adminLogin" ><Button variant="info">Admin Login</Button></Link>
         </div>
     )
 }
