@@ -2,6 +2,10 @@ import {HashRouter as Router, Route, Routes} from 'react-router-dom';
 import MainMenu from './components/MainMenu';
 import CreateReport from './components/CreateReport';
 import AdminLogin from './components/AdminLogin';
+import Predictor from './components/Predictor';
+import ViewMap from './components/ViewMap';
+import ViewReports from './components/ViewReports';
+import ViewTrends from './components/ViewTrends';
 
 const AppRouter = () => (
     <Router>
@@ -10,6 +14,10 @@ const AppRouter = () => (
                 <Route path='/' element={<MainMenu />} exact={true} />
                 <Route path='/createReport' element={<CreateReport />} />
                 <Route path='/adminLogin' element={<AdminLogin />} />
+                <Route path='predictor' element={<Predictor />} />
+                <Route path="/map" element={<ViewMap />} />
+                <Route path='trends' element={<ViewTrends />} />
+                <Route path='reports' element={<ViewReports />} />
             </Routes>
         </div>
     </Router>

@@ -10,6 +10,18 @@ function MainMenu() {
             <br />
             <br />
             <Link to="/adminLogin" ><Button variant="info">Admin Login</Button></Link>
+            <br />
+            <br />
+            <Link to="/predictor" ><Button variant="info">Predictor Model</Button></Link>
+            <br />
+            <br />
+            <Link to="/trends" ><Button variant="info">View Trends</Button></Link>
+            <br />
+            <br />
+            <Link to="/map" ><Button variant="info">View Map</Button></Link>
+            <br />
+            <br />
+            <Link to="/reports" ><Button variant="info">View Reports</Button></Link>
         </div>
     )
 }
