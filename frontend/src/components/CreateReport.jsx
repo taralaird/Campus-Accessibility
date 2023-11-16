@@ -7,9 +7,10 @@ import HeaderLogo from "./HeaderLogo";
 
 function CreateReport() {
     return (
-        <div style ={{ alignItems:'center', height: '100vh'}}>
+        <div>
             <HeaderLogo />
-            <h1>Create a New Report</h1>
+            <div style ={{ "margin": "0% 10% 0%"}}>
+            <h1 style ={{"text-align":"center"}}>Create a New Report</h1>
             <Form>
                 <Form.Group className="mb-3">
                     <Form.Label>Title</Form.Label>
@@ -50,6 +51,7 @@ function CreateReport() {
             </Form>
             <br />
             <Link to="/map" ><Button variant="outline-danger">Cancel</Button></Link>
+        </div>
         </div>
     )
 }
