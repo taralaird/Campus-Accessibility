@@ -6,32 +6,48 @@ import { Link } from "react-router-dom";
 
 function CreateReport() {
     return (
-        <div>
-            <h1>Create Report</h1>
+        <div style ={{ alignItems:'center', height: '100vh'}}>
+            <h1>Create a New Report</h1>
             <Form>
                 <Form.Group className="mb-3">
-                    <Form.Label>Name</Form.Label>
-                    <Form.Control placeholder="Enter name, if desired" />
-                    <Form.Text className="text-muted">
-                    Sharing your name is optional.
-                    </Form.Text>
+                    <Form.Label>Title</Form.Label>
+                    <Form.Control placeholder="Please give your report a short title" />
                 </Form.Group>
 
                 <Form.Group className="mb-3">
-                    <Form.Label>Location</Form.Label>
-                    <Form.Control placeholder="Enter location of incident" />
+                    <Form.Label>Building</Form.Label>
+                    <Form.Select style={{"color": "grey"}}>
+                        <option>Select the building where the issue is located</option>
+                        {/* TODO: add options for every building */}
+                        <option value="1">Amit Chakma Engineering Building</option>
+                        <option value="2">Natural Sciences Centre</option>
+                        <option value="3">Social Sciences Centre</option>
+                    </Form.Select>    
+                </Form.Group>
+
+                <Form.Group className="mb-3">
+                    <Form.Label>Report Type</Form.Label>
+                    <Form.Select style={{"color": "grey"}}>
+                        <option >Select the type of report you are making</option>
+                        <option value="1">Washroom Complaint</option>
+                        <option value="2">Elevator Complaint</option>
+                        <option value="3">Automatic Door Complaint</option>
+                        <option value="4">General Complaint</option>
+                    </Form.Select>    
                 </Form.Group>
 
                 <Form.Group className="mb-3">
                     <Form.Label>Issue Details</Form.Label>
                     <Form.Control placeholder="Share the details of the observed accessibility issue." />
                 </Form.Group>
-                <Button variant="primary" type="submit">
+
+                <Button variant="outline-info" type="submit">
                     Submit
                 </Button>
+
             </Form>
             <br />
-            <Link to="/" ><Button variant="info">Return to Homepage</Button></Link>
+            <Link to="/map" ><Button variant="outline-danger">Cancel</Button></Link>
         </div>
     )
 }
