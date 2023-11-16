@@ -1,10 +1,12 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import Button from 'react-bootstrap/Button';
+import HeaderLogo from "./HeaderLogo";
 
 function MainMenu() {
     return (
         <div>
+            <HeaderLogo />
             <h1>Campus Accessibility</h1>
             <Link to="/createReport" ><Button variant="info">Create Report</Button></Link>
             <br />

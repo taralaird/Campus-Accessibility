@@ -2,11 +2,13 @@ import React from "react";
 import Form from 'react-bootstrap/Form';
 import Button from 'react-bootstrap/Button';
 import { Link } from "react-router-dom";
+import HeaderLogo from "./HeaderLogo";
 
 
 function CreateReport() {
     return (
         <div style ={{ alignItems:'center', height: '100vh'}}>
+            <HeaderLogo />
             <h1>Create a New Report</h1>
             <Form>
                 <Form.Group className="mb-3">
