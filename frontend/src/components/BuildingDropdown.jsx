@@ -57,7 +57,7 @@ export default function BuildingDropdown() {
         "Western Science Centre",
         "Western Recreation Centre",
         "Western Student Services Building",
-        "Westminister Hall"];
+        "Westminister Hall"].sort();
     
     return (
         <Autocomplete disablePortal
