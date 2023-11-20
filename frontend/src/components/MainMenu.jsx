@@ -2,28 +2,24 @@ import React from "react";
 import { Link } from "react-router-dom";
 import Button from 'react-bootstrap/Button';
 import HeaderLogo from "./HeaderLogo";
+import ButtonGroup from "react-bootstrap/ButtonGroup";
 
 function MainMenu() {
     return (
-        <div>
+            <div class="row">
+                <div class="column">
             <HeaderLogo />
-            <h1>Campus Accessibility</h1>
-            <Link to="/createReport" ><Button variant="info">Create Report</Button></Link>
-            <br />
-            <br />
-            <Link to="/adminLogin" ><Button variant="info">Admin Login</Button></Link>
-            <br />
-            <br />
-            <Link to="/predictor" ><Button variant="info">Predictor Model</Button></Link>
-            <br />
-            <br />
-            <Link to="/trends" ><Button variant="info">View Trends</Button></Link>
-            <br />
-            <br />
-            <Link to="/map" ><Button variant="info">View Map</Button></Link>
-            <br />
-            <br />
-            <Link to="/reports" ><Button variant="info">View Reports</Button></Link>
+            </div>
+            <div class ="column" style ={{ "float": "right"}}>
+            <ButtonGroup vertical>
+            <Button variant="info"><Link to="/createReport" style= {{"textDecoration" :"none", "color":"black"}}>Create Report</Link></Button>
+            <Button variant="info"><Link to="/adminLogin" style= {{"textDecoration" :"none", "color":"black"}}>Admin Login</Link></Button>
+            <Button variant="info"><Link to="/predictor" style= {{"textDecoration" :"none", "color":"black"}}>Predictor Model</Link></Button>
+            <Button variant="info"><Link to="/trends" style= {{"textDecoration" :"none", "color":"black"}}>View Trends</Link></Button>
+            <Button variant="info"><Link to="/map" style= {{"textDecoration" :"none", "color":"black"}}>View Map</Link></Button>
+            <Button variant="info"><Link to="/reports" style= {{"textDecoration" :"none", "color":"black"}}>View Reports</Link></Button>
+        </ButtonGroup>
+        </div>
         </div>
     )
 }
