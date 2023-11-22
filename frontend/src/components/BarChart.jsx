@@ -2,7 +2,23 @@ import { useD3 } from '../hooks/useD3';
 import React from 'react';
 import * as d3 from 'd3';
 
-function BarChart({ data, title, subtitle, note, timePeriod }) {
+function BarChart({ data, title, subtitle, note, timePeriod, buildingName }) {
+  // default values
+  if (!data) {
+    data = [
+      {xValue: 6, w: 3, yValue: 6.78},
+      {xValue: 5, w: 4, yValue: 7.97},
+      {xValue: 4, w: 9, yValue: 9.27},
+      {xValue: 3, w: 9, yValue: 8.75},
+      {xValue: 2, w: 4, yValue: 8.24},
+      {xValue: 1, w: 8, yValue: 8.94},
+    ];
+  }
+  if (!timePeriod) {
+    timePeriod = "Months Ago"
+  }
+  // used to filter by building
+  const building = buildingName;
   
   const ref = useD3(
     // set up sizing and margins

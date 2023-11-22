@@ -11,20 +11,11 @@ export default function ViewTrends() {
        yValue determines the brightness of each bar (greater value => brighter bar)
        feel free to make whatever stylistic changes you believe are beneficial */
     // below is sample data
-
-    const data = [
-        {xValue: 6, w: 3, yValue: 6.78},
-        {xValue: 5, w: 4, yValue: 7.97},
-        {xValue: 4, w: 9, yValue: 9.27},
-        {xValue: 3, w: 9, yValue: 8.75},
-        {xValue: 2, w: 4, yValue: 8.24},
-        {xValue: 1, w: 8, yValue: 8.94},
-      ];
     return (
         <div>
             <HeaderLogo />
             <h1>Trends</h1>
-            <BarChart data={data} timePeriod={"Weeks Ago"} title={"sample title"} subtitle={"sample subtitle"} note={"sample note"} />
+            <BarChart title={"sample title"} subtitle={"sample subtitle"} note={"sample note"} />
             <br />
             <Link to="/" ><Button variant="info">Return to Homepage</Button></Link>
         </div>
