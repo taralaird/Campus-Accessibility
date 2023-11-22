@@ -6,7 +6,7 @@ export default function HeaderLogo() {
     return (
         <div style={{"width": "20%", "height": "20%"}}>
             <Link to="/">
-                <img src={logo} />
+                <img alt="Header Logo" src={logo} />
             </Link>
         </div>
     )
