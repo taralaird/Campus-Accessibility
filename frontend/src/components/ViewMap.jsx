@@ -8,16 +8,19 @@ import ButtonGroup from 'react-bootstrap/ButtonGroup';
 import buttonVariant from "../functions/buttonVariant";
 import { Autocomplete, TextField } from "@mui/material";
 import BuildingInfo from "./BuildingInfo";
+import "../stylesheets/ViewMap.css";
+
 /* once we have a backend, we should build a map
    with the building name as key and the number of issues as value */
 
 export default function ViewMap() {
     let initialBuilding = null;
-    if (buildingNames && buildingNames[0]) {
-        initialBuilding = buildingNames[0];
+    const sortedNames = buildingNames.sort();
+    if (sortedNames && sortedNames[0]) {
+        initialBuilding = sortedNames[0];
     }
     const [building, setBuilding] = useState(initialBuilding);
-    const buttons = buildingNames.map((value, index) => {
+    const buttons = sortedNames.map((value, index) => {
         return (
             <Button size="sm" variant={buttonVariant(0, true)} onClick={() => {setBuilding(value);}}>{value}</Button>
         )
@@ -35,13 +38,13 @@ export default function ViewMap() {
             <Autocomplete disablePortal
                     onChange={(e) => {setBuilding(e.target.outerText)}}
                     id="combo-box-demo"
-                    options={buildingNames}
+                    options={sortedNames}
                     sx={{ width: 300 }}
                     renderInput={(params) => <TextField {...params} label="Building" />}
                 />
             <br />
             <div>
-                <img alt={"Campus Map"} src={CampusMap} style={{"height": 500, "width": "auto", "margin-top": 0}} />
+                <img className="campus-map" alt={"Campus Map"} src={CampusMap} />
                 <BuildingInfo buildingName={building} severity={buttonVariant(0)} />
             </div>
             <br />
