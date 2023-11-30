@@ -3,6 +3,7 @@ import Button from 'react-bootstrap/Button';
 import { Link } from "react-router-dom";
 import HeaderLogo from "./HeaderLogo";
 import BarChart from "./BarChart";
+import ContactFooter from "./ContactFooter";
 
 export default function ViewTrends() {
     /* Bar Chart Component explained:
@@ -11,7 +12,7 @@ export default function ViewTrends() {
        yValue determines the brightness of each bar (greater value => brighter bar)
        feel free to make whatever stylistic changes you believe are beneficial */
     // below is sample data
-
+        
     const data = [
         {xValue: 6, w: 3, yValue: 6.78},
         {xValue: 5, w: 4, yValue: 7.97},
@@ -26,7 +27,8 @@ export default function ViewTrends() {
             <h1>Trends</h1>
             <BarChart data={data} timePeriod={"Weeks Ago"} title={"sample title"} subtitle={"sample subtitle"} note={"sample note"} />
             <br />
-            <Link to="/" ><Button variant="info">Return to Homepage</Button></Link>
+            <Link to="/" ><Button variant="info" style= {{"margin-bottom" :"100px"}} >Return to Homepage</Button></Link> 
+            <ContactFooter />
         </div>
     )
 }

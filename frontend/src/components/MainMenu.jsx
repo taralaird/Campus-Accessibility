@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import Button from 'react-bootstrap/Button';
 import HeaderLogo from "./HeaderLogo";
 import ButtonGroup from "react-bootstrap/ButtonGroup";
+import ContactFooter from "./ContactFooter";
 
 function MainMenu() {
     return (
@@ -20,7 +21,10 @@ function MainMenu() {
             <Button variant="info"><Link to="/reports" style= {{"textDecoration" :"none", "color":"black"}}>View Reports</Link></Button>
         </ButtonGroup>
         </div>
+        <ContactFooter />
         </div>
+        
+        
     )
 }
 
