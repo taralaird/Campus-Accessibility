@@ -3,6 +3,7 @@ import Form from 'react-bootstrap/Form';
 import Button from 'react-bootstrap/Button';
 import { Link } from "react-router-dom";
 import HeaderLogo from "./HeaderLogo";
+import ContactFooter from "./ContactFooter";
 
 function AdminLogin() {
     const [admin, setAdmin] = useState(null);
@@ -36,6 +37,7 @@ function AdminLogin() {
                 </Button>
             </Form>
             <Link to="/" ><Button variant="info">Return to Homepage</Button></Link>
+            <ContactFooter />
         </div>
     )
 }
