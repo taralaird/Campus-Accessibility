@@ -3,7 +3,7 @@ import Button from 'react-bootstrap/Button';
 import { Link } from "react-router-dom";
 import BarChart from "./BarChart";
 import NavMenu from "./NavMenu";
-import ContactFooter from "./ContactFooter";
+import Footer from "./Footer";
 
 export default function ViewTrends() {
     /* Bar Chart Component explained:
@@ -29,7 +29,7 @@ export default function ViewTrends() {
             <BarChart data={data} timePeriod={"Weeks Ago"} title={"sample title"} subtitle={"sample subtitle"} note={"sample note"} />
             <br />
             <Link to="/" ><Button variant="info" style= {{"margin-bottom" :"100px"}} >Return to Homepage</Button></Link> 
-            <ContactFooter />
+            <Footer />
         </div>
     )
 }

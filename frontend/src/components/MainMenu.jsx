@@ -1,12 +1,11 @@
 import React from "react";
 import Button from 'react-bootstrap/Button';
+import { Link } from "react-router-dom";
 import MapImage from "../images/Campus_Map_2-1.png";
 import { ArrowsAngleExpand } from "react-bootstrap-icons";
 import "../styles.css";
 import NavMenu from "./NavMenu";
-import HeaderLogo from "./HeaderLogo";
-import ButtonGroup from "react-bootstrap/ButtonGroup";
-import ContactFooter from "./ContactFooter";
+import Footer from "./Footer";
 
 function MainMenu() {
   
@@ -18,9 +17,7 @@ function MainMenu() {
             <div className="map-sec">
             <img
               src={MapImage} alt="Map" style={{ cursor: 'pointer' }}/>
-        <Button variant="info" className="expand-button" >
-          Expand Map <ArrowsAngleExpand />
-        </Button>
+        <Button variant="info" className="expand-button" ><Link to="/map" className="expand-button-link">Expand Map</Link> <ArrowsAngleExpand /> </Button>
       </div>
                 <div className="newest-sec">
 
@@ -44,7 +41,7 @@ function MainMenu() {
 
             </div>
             <div>
-                <ContactFooter/>
+                <Footer/>
             </div>
         </div>
         

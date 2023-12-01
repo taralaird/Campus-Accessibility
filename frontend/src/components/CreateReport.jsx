@@ -7,7 +7,7 @@ import { TextField } from "@mui/material";
 import BuildingDropdown from "./BuildingDropdown";
 import checkReportErrors from "../functions/createReportErrors";
 import NavMenu from "./NavMenu";
-import ContactFooter from "./ContactFooter";
+import Footer from "./Footer";
 
 function CreateReport() {
 
@@ -133,7 +133,7 @@ function CreateReport() {
             <br />
             <Link to="/map" ><Button variant="outline-danger">Cancel</Button></Link>
         </div>
-        <ContactFooter />
+        <Footer />
         </div>
     )
 }

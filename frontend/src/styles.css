@@ -1,6 +1,6 @@
 
 :root {
-  --blue: #4aa0b4;
+  --blue:rgb(75, 160, 181);
   --white: #fff;
 }
 /*----------NavMenu--------*/
@@ -8,7 +8,7 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
-   
+    box-shadow: 0px 5px 5px -5px rgba(0, 0, 0, 0.5);
   }
   
   .logo-container {
@@ -88,6 +88,10 @@
     font-weight: bold;
 
   }
+  .expand-button-link{
+    color:var(--white);
+    text-decoration: none;
+  }
  
  button.expand-button:hover {
   background-color:var(--blue); 
@@ -123,4 +127,41 @@
     margin: 0;
     font-style: italic;
   
+  }
+
+  /*----------Footer--------*/
+  .footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 0 1rem;
+    padding: 0rem 0rem;
+   
+  }
+  
+  .contact-us {
+    margin: 0;
+  }
+  
+  .admin-login-button {
+    margin: 0;
+    text-align: right;
+    
+  }
+  .contact-us a,
+  .admin-login-button {
+    text-decoration: none;
+    font-size: 1.2rem;
+    color: var(--blue);
+    position: relative;
+    transition: all 0.3s ease;
+    padding:0.4rem;
+    line-height: 1;
+  }
+  
+  .contact-us a:hover,
+  .admin-login-button:hover {
+    
+    color: var(--blue);
+    background: rgba(0, 0, 0, 0.05);
   }
