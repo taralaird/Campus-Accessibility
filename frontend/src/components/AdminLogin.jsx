@@ -9,6 +9,7 @@ function AdminLogin() {
     const [admin, setAdmin] = useState(null);
     const [password, setPassword] = useState(null);
     return (
+        <body><main>
         <div>
             {/*<HeaderLogo />*/}
             <NavMenu/>
@@ -38,8 +39,11 @@ function AdminLogin() {
                 </Button>
             </Form>
             <Link to="/" ><Button variant="info">Return to Homepage</Button></Link>
-            <Footer />
+            
         </div>
+        </main>
+        <Footer />
+        </body>
     )
 }
 

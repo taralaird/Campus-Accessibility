@@ -3,6 +3,16 @@
   --blue:rgb(75, 160, 181);
   --white: #fff;
 }
+body {
+  margin: 0;
+  padding: 0;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+main {
+  flex: 1; /* Make the content area expand */
+}
 /*----------NavMenu--------*/
   .nav-menu {
     display: flex;
@@ -105,7 +115,6 @@
 }
   .newest-sec {
     flex: 0 0 25%; 
-   /* border-radius: 0.5rem;*/
     background-color:var(--blue);
   }
   
@@ -130,13 +139,13 @@
   }
 
   /*----------Footer--------*/
-  .footer {
+  footer {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    margin: 0 1rem;
-    padding: 0rem 0rem;
-   
+    margin: 0.5rem 1rem;
+    width:98%;
+    
   }
   
   .contact-us {
@@ -161,7 +170,6 @@
   
   .contact-us a:hover,
   .admin-login-button:hover {
-    
     color: var(--blue);
     background: rgba(0, 0, 0, 0.05);
   }

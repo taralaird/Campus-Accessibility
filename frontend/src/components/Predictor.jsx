@@ -7,12 +7,16 @@ import Footer from "./Footer";
 
 export default function Predictor() {
     return (
-        <div>
-            {/*<HeaderLogo />*/}
-            <NavMenu/>
-            <h1>Predictor</h1>
-            <Link to="/" ><Button variant="info">Return to Homepage</Button></Link>
+        <body>
+            <main>
+                <div>
+                    {/*<HeaderLogo />*/}
+                    <NavMenu/>
+                    <h1>Predictor</h1>
+                    <Link to="/" ><Button variant="info">Return to Homepage</Button></Link>
+                </div>
+            </main>
             <Footer />
-        </div>
+        </body>
     )
 }

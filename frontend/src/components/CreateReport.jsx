@@ -72,6 +72,7 @@ function CreateReport() {
         "Westminister Hall"].sort();
 
     return (
+        <body><main>
         <div>
             {/*<HeaderLogo />*/}
             <NavMenu/>
@@ -128,13 +129,14 @@ function CreateReport() {
                 }>
                     Submit
                 </Button>
-
             </Form>
             <br />
             <Link to="/map" ><Button variant="outline-danger">Cancel</Button></Link>
         </div>
-        <Footer />
         </div>
+        </main>
+        <Footer />
+        </body>
     )
 }
 

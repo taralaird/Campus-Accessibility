@@ -11,6 +11,7 @@ function MainMenu() {
   
   
     return (
+        <body><main>
         <div className="main-page">
             <NavMenu/>
             <div className="content">
@@ -38,13 +39,11 @@ function MainMenu() {
                         </div>
                     </div>
                 </div>
-
-            </div>
-            <div>
-                <Footer/>
             </div>
         </div>
-        
+        </main>
+            <Footer/>
+        </body>
         
     )
 }
