@@ -8,7 +8,10 @@ import { ArrowsAngleExpand } from 'react-bootstrap-icons';
 import "../styles.css";
 
 
+
 function MainMenu() {
+  
+  
     return (
         <div className="main-page">
             <div className="nav-menu">
@@ -28,10 +31,16 @@ function MainMenu() {
             </div>
 
             <div className="content">
-                <div className="map-sec">
-                <img src={MapImage} alt="Map" />
-                <Button variant="info" className="expand-button">Expand Map <ArrowsAngleExpand /></Button>
-                </div>
+
+
+
+            <div className="map-sec">
+            <img
+              src={MapImage} alt="Map" style={{ cursor: 'pointer' }}/>
+        <Button variant="info" className="expand-button" >
+          Expand Map <ArrowsAngleExpand />
+        </Button>
+      </div>
 
                 <div className="newest-sec">
 
@@ -57,5 +66,8 @@ function MainMenu() {
         </div>
     )
 }
+
+
+
 
 export default MainMenu;

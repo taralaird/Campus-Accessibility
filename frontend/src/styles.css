@@ -1,5 +1,8 @@
 
-  
+:root {
+  --blue: #4aa0b4;
+  --white: #fff;
+}
   .nav-menu {
     display: flex;
     justify-content: space-between;
@@ -24,20 +27,20 @@
   body .button-link,
   body .button-link:focus,
   body .button-link:active {
-    color: rgb(74, 160, 181);
+    color: var(--blue);
     text-decoration: none;
     border: none;
     background-color: transparent;
     padding: 0 0.5rem;
     font-weight: bold;
     text-align: right;
-    box-shadow: inset 0 0 0 0 #4aa0b4;
+    box-shadow: inset 0 0 0 0 var(--blue);
     transition: color 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
     border-radius: 0;
   }
   
   .button-link:hover {
-    color: #fff;
+    color: var(--white);
     box-shadow: inset 200px 0 0 0 rgba(70, 159, 181, 0.9);
   }
   
@@ -54,7 +57,7 @@
     display: flex;
     padding: 1rem;
     justify-content: space-between;
-    color: #fff;
+    color:var(--white);
   }
   
   .map-sec {
@@ -76,18 +79,23 @@
     bottom: 0; 
     right: 0;
     margin: 10px;
-    color: #fff;
-    background-color: #4aa0b4;
+    color:var(--white);
+    background-color: var(--blue);
     border: none;
     font-weight: bold;
 
   }
  
-  
+ button.expand-button:hover {
+  background-color:var(--blue); 
+  color: var(--white); 
+  border-color:var(--blue);
+  box-shadow: 0 0 10px rgba(74, 161, 181, 0.8);
+}
   .newest-sec {
     flex: 0 0 25%; 
     border-radius: 10px;
-    background-color: #4aa0b4;
+    background-color:var(--blue);
   }
   
   .newest1,
