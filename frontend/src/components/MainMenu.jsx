@@ -4,6 +4,7 @@ import Button from 'react-bootstrap/Button';
 import HeaderLogo from "./HeaderLogo";
 import ButtonGroup from "react-bootstrap/ButtonGroup";
 import MapImage from "../images/Campus_Map_2-1.png";
+import { ArrowsAngleExpand } from 'react-bootstrap-icons';
 import "../styles.css";
 
 
@@ -29,7 +30,7 @@ function MainMenu() {
             <div className="content">
                 <div className="map-sec">
                 <img src={MapImage} alt="Map" />
-                <Button variant="info" className="expand-button">Expand Map</Button>
+                <Button variant="info" className="expand-button">Expand Map <ArrowsAngleExpand /></Button>
                 </div>
 
                 <div className="newest-sec">
@@ -38,7 +39,6 @@ function MainMenu() {
                         <h2>Newest Trends</h2>
                         <div>
                         <div className="image-placeholder">
-                                {/* TrendsSection component goes here when available */}
                                 <p>Image Placeholder</p>
                             </div>
                         </div>
@@ -47,7 +47,6 @@ function MainMenu() {
                         <h2>Newest Reports</h2>
                         <div>
                         <div className="image-placeholder">
-                                {/* TrendsSection component goes here when available */}
                                 <p>Image Placeholder</p>
                             </div>
                         </div>
