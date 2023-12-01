@@ -4,8 +4,9 @@ import MapImage from "../images/Campus_Map_2-1.png";
 import { ArrowsAngleExpand } from "react-bootstrap-icons";
 import "../styles.css";
 import NavMenu from "./NavMenu";
-
-
+import HeaderLogo from "./HeaderLogo";
+import ButtonGroup from "react-bootstrap/ButtonGroup";
+import ContactFooter from "./ContactFooter";
 
 function MainMenu() {
   
@@ -42,7 +43,12 @@ function MainMenu() {
                 </div>
 
             </div>
+            <div>
+                <ContactFooter/>
+            </div>
         </div>
+        
+        
     )
 }
 

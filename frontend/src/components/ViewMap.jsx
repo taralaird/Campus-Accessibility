@@ -3,6 +3,7 @@ import Button from 'react-bootstrap/Button';
 import { Link } from "react-router-dom";
 import BuildingDropdown from "./BuildingDropdown";
 import NavMenu from "./NavMenu";
+import ContactFooter from "./ContactFooter";
 
 export default function ViewMap() {
 
@@ -14,6 +15,7 @@ export default function ViewMap() {
             <BuildingDropdown />
             <br />
             <Link to="/" ><Button variant="info">Return to Homepage</Button></Link>
+            <ContactFooter />
         </div>
     )
 }
