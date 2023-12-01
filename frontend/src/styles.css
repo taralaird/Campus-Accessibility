@@ -3,21 +3,22 @@
   --blue: #4aa0b4;
   --white: #fff;
 }
+/*----------NavMenu--------*/
   .nav-menu {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    box-shadow: 0px 5px 5px -5px rgba(0, 0, 0, 0.5);
-    border: #7a7a7a;
+   
   }
   
   .logo-container {
-    margin-right: 1rem;
+    margin:0 1rem;
   }
   
   .logo-container img {
-    width: 20rem;
+    width: 25rem;
     height: auto;
+    image-rendering: crisp-edges;
   }
   
   .button-container {
@@ -48,11 +49,12 @@
     text-align: right;
     text-decoration: none;
     padding: 0 1rem;
-    margin: 0.05rem 0;
+    margin: 0.02rem 0;
     display: inline-block;
     width: fit-content;
   }
   
+  /*----------MainMenu--------*/
   .content {
     display: flex;
     padding: 1rem;
@@ -64,7 +66,7 @@
     flex: 0 0 72%;
     position: relative;
     overflow: hidden;
-    border-radius: 10px;
+    /*border-radius: 10px;*/
     margin-right: 20px;
   }
   
@@ -94,7 +96,7 @@
 }
   .newest-sec {
     flex: 0 0 25%; 
-    border-radius: 10px;
+   /* border-radius: 0.5rem;*/
     background-color:var(--blue);
   }
   

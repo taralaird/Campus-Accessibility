@@ -2,11 +2,11 @@ import React, { useState, useEffect } from "react";
 import Form from 'react-bootstrap/Form';
 import Button from 'react-bootstrap/Button';
 import { Link } from "react-router-dom";
-import HeaderLogo from "./HeaderLogo";
 import Autocomplete from "@mui/material/Autocomplete";
 import { TextField } from "@mui/material";
 import BuildingDropdown from "./BuildingDropdown";
 import checkReportErrors from "../functions/createReportErrors";
+import NavMenu from "./NavMenu";
 
 function CreateReport() {
 
@@ -72,7 +72,8 @@ function CreateReport() {
 
     return (
         <div>
-            <HeaderLogo />
+            {/*<HeaderLogo />*/}
+            <NavMenu/>
             <div style ={{ "margin": "0% 10% 0%"}}>
             <h1 style ={{"text-align":"center"}}>Create a New Report</h1>
             <Form>

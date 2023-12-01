@@ -1,14 +1,15 @@
 import React from "react";
 import Button from 'react-bootstrap/Button';
 import { Link } from "react-router-dom";
-import HeaderLogo from "./HeaderLogo";
 import BuildingDropdown from "./BuildingDropdown";
+import NavMenu from "./NavMenu";
 
 export default function ViewMap() {
 
     return (
         <div>
-            <HeaderLogo />
+            {/*<HeaderLogo />*/}
+            <NavMenu/>
             <h1>Map</h1>
             <BuildingDropdown />
             <br />

@@ -1,8 +1,8 @@
 import React from "react";
 import Button from 'react-bootstrap/Button';
 import { Link } from "react-router-dom";
-import HeaderLogo from "./HeaderLogo";
 import BarChart from "./BarChart";
+import NavMenu from "./NavMenu";
 
 export default function ViewTrends() {
     /* Bar Chart Component explained:
@@ -22,7 +22,8 @@ export default function ViewTrends() {
       ];
     return (
         <div>
-            <HeaderLogo />
+            {/*<HeaderLogo />*/}
+            <NavMenu/>
             <h1>Trends</h1>
             <BarChart data={data} timePeriod={"Weeks Ago"} title={"sample title"} subtitle={"sample subtitle"} note={"sample note"} />
             <br />
