@@ -3,7 +3,6 @@ import Form from 'react-bootstrap/Form';
 import Button from 'react-bootstrap/Button';
 import { Link } from "react-router-dom";
 import NavMenu from "./NavMenu";
-import HeaderLogo from "./HeaderLogo";
 import ContactFooter from "./ContactFooter";
 
 function AdminLogin() {
