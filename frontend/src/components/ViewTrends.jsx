@@ -1,9 +1,9 @@
 import React from "react";
 import Button from 'react-bootstrap/Button';
 import { Link } from "react-router-dom";
-import HeaderLogo from "./HeaderLogo";
 import BarChart from "./BarChart";
-import ContactFooter from "./ContactFooter";
+import NavMenu from "./NavMenu";
+import Footer from "./Footer";
 
 export default function ViewTrends() {
     /* Bar Chart Component explained:
@@ -22,13 +22,19 @@ export default function ViewTrends() {
         {xValue: 1, w: 8, yValue: 8.94},
       ];
     return (
-        <div>
-            <HeaderLogo />
-            <h1>Trends</h1>
-            <BarChart data={data} timePeriod={"Weeks Ago"} title={"sample title"} subtitle={"sample subtitle"} note={"sample note"} />
-            <br />
-            <Link to="/" ><Button variant="info" style= {{"margin-bottom" :"100px"}} >Return to Homepage</Button></Link> 
-            <ContactFooter />
-        </div>
+        <body>
+            <main>
+                <div>
+                    {/*<HeaderLogo />*/}
+                    <NavMenu/>
+                    <h1>Trends</h1>
+                    <BarChart data={data} timePeriod={"Weeks Ago"} title={"sample title"} subtitle={"sample subtitle"} note={"sample note"} />
+                    <br />
+                    <Link to="/" ><Button variant="info" style= {{"margin-bottom" :"100px"}} >Return to Homepage</Button></Link> 
+                    
+                </div>
+            </main>
+            <Footer />
+        </body>
     )
 }

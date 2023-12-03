@@ -2,12 +2,12 @@ import React, { useState, useEffect } from "react";
 import Form from 'react-bootstrap/Form';
 import Button from 'react-bootstrap/Button';
 import { Link } from "react-router-dom";
-import HeaderLogo from "./HeaderLogo";
 import Autocomplete from "@mui/material/Autocomplete";
 import { TextField } from "@mui/material";
 import BuildingDropdown from "./BuildingDropdown";
 import checkReportErrors from "../functions/createReportErrors";
-import ContactFooter from "./ContactFooter";
+import NavMenu from "./NavMenu";
+import Footer from "./Footer";
 
 function CreateReport() {
 
@@ -72,8 +72,10 @@ function CreateReport() {
         "Westminister Hall"].sort();
 
     return (
+        <body><main>
         <div>
-            <HeaderLogo />
+            {/*<HeaderLogo />*/}
+            <NavMenu/>
             <div style ={{ "margin": "0% 10% 0%"}}>
             <h1 style ={{"text-align":"center"}}>Create a New Report</h1>
             <Form>
@@ -127,13 +129,14 @@ function CreateReport() {
                 }>
                     Submit
                 </Button>
-
             </Form>
             <br />
             <Link to="/map" ><Button variant="outline-danger">Cancel</Button></Link>
         </div>
-        <ContactFooter />
         </div>
+        </main>
+        <Footer />
+        </body>
     )
 }
 
