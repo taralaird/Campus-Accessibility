@@ -4,15 +4,15 @@ import Toast from 'react-bootstrap/Toast';
 export default function BuildingInfo(props) {
     const severity = String(props.severity);
     const colour = severity.includes("success")? 
-    "green" : severity.includes("warning")? 
-    "yellow": severity.includes("danger")? 
-    "red" : "error";
+    "low" : severity.includes("warning")? 
+    "moderate": severity.includes("danger")? 
+    "severe" : "error";
     
 
     return (
-        <Toast>
-            <Toast.Header closeButton={false}>
-                <h1>{props.buildingName}</h1>
+        <Toast style={{"width": "100%", "height": "40%"}}>
+            <Toast.Header closeButton={false} >
+                <h1 >{props.buildingName} Information</h1>
             </Toast.Header>
             <Toast.Body>
                 <h3>{"Severity: " + colour}</h3>

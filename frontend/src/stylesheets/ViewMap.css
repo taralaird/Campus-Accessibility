@@ -1,5 +1,35 @@
+.mapPage {
+    display: flex;
+}
+
+.info {
+    flex-flow: column-wrap;
+    flex: 25%;
+}
+
+.buildingInfo {
+    align-self: flex-start
+}
+
+.reports {
+    height: 400px;
+    overflow: auto;
+    align-self: flex-end;
+}
+
+.map-container {
+    flex: 75%;
+    position: relative;
+}
+
 .campus-map {
-    margin-top: 0;
-    height: auto;
     width: 100%;
-};
+    height: auto;
+    margin-top: 0;
+
+}
+
+.map-container .buttons {
+    position: absolute;
+    
+}
