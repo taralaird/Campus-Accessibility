@@ -1,27 +1,54 @@
 import React from "react";
-import { Link } from "react-router-dom";
 import Button from 'react-bootstrap/Button';
-import HeaderLogo from "./HeaderLogo";
-import ButtonGroup from "react-bootstrap/ButtonGroup";
+import { Link } from "react-router-dom";
+import MapImage from "../images/Campus_Map_2-1.png";
+import { ArrowsAngleExpand } from "react-bootstrap-icons";
+import "../styles.css";
+import NavMenu from "./NavMenu";
+import Footer from "./Footer";
 
 function MainMenu() {
+  
+  
     return (
-            <div class="row">
-                <div class="column">
-            <HeaderLogo />
+        <body><main>
+        <div className="main-page">
+            <NavMenu/>
+            <div className="content">
+            <div className="map-sec">
+            <img
+              src={MapImage} alt="Map" style={{ cursor: 'pointer' }}/>
+        <Button variant="info" className="expand-button" ><Link to="/map" className="expand-button-link">Expand Map</Link> <ArrowsAngleExpand /> </Button>
+      </div>
+                <div className="newest-sec">
+
+                    <div className="newest1">
+                        <h2>Newest Trends</h2>
+                        <div>
+                        <div className="image-placeholder">
+                                <p>Image Placeholder</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div className="newest2">
+                        <h2>Newest Reports</h2>
+                        <div>
+                        <div className="image-placeholder">
+                                <p>Image Placeholder</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
-            <div class ="column" style ={{ "float": "right"}}>
-            <ButtonGroup vertical>
-            <Button variant="info"><Link to="/createReport" style= {{"textDecoration" :"none", "color":"black"}}>Create Report</Link></Button>
-            <Button variant="info"><Link to="/adminLogin" style= {{"textDecoration" :"none", "color":"black"}}>Admin Login</Link></Button>
-            <Button variant="info"><Link to="/predictor" style= {{"textDecoration" :"none", "color":"black"}}>Predictor Model</Link></Button>
-            <Button variant="info"><Link to="/trends" style= {{"textDecoration" :"none", "color":"black"}}>View Trends</Link></Button>
-            <Button variant="info"><Link to="/map" style= {{"textDecoration" :"none", "color":"black"}}>View Map</Link></Button>
-            <Button variant="info"><Link to="/reports" style= {{"textDecoration" :"none", "color":"black"}}>View Reports</Link></Button>
-        </ButtonGroup>
         </div>
-        </div>
+        </main>
+            <Footer/>
+        </body>
+        
     )
 }
+
+
+
 
 export default MainMenu;

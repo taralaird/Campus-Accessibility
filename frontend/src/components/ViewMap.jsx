@@ -9,9 +9,15 @@ import buttonVariant from "../functions/buttonVariant";
 import { Autocomplete, TextField } from "@mui/material";
 import BuildingInfo from "./BuildingInfo";
 import "../stylesheets/ViewMap.css";
+import BuildingDropdown from "./BuildingDropdown";
+import NavMenu from "./NavMenu";
+import Footer from "./Footer";
 
 /* once we have a backend, we should build a map
    with the building name as key and the number of issues as value */
+
+
+
 
 export default function ViewMap() {
     let initialBuilding = null;
@@ -32,10 +38,13 @@ export default function ViewMap() {
     
 
     return (
-        <div>
-            <HeaderLogo />
-            <h1>Map</h1>
-            <Autocomplete disablePortal
+
+        <body>
+            <main>
+                <div>
+                    <NavMenu/>
+                    <h1>Map</h1>
+                    <Autocomplete disablePortal
                     onChange={(e) => {setBuilding(e.target.outerText)}}
                     id="combo-box-demo"
                     options={sortedNames}
@@ -50,7 +59,11 @@ export default function ViewMap() {
             <br />
             {buttonGroup}
             <br />
-            <Link to="/" ><Button variant="info">Return to Homepage</Button></Link>
-        </div>
+                    <Link to="/" ><Button variant="info">Return to Homepage</Button></Link>
+                </div>
+            </main>
+            <Footer />
+        </body>
+
     )
 }
