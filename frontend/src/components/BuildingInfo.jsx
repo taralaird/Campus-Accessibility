@@ -10,17 +10,18 @@ export default function BuildingInfo(props) {
     
 
     return (
-        <Toast style={{"width": "100%", "height": "40%"}}>
-            <Toast.Header closeButton={false} >
-                <h1 >{props.buildingName} Information</h1>
-            </Toast.Header>
-            <Toast.Body>
-                <h3>{"Severity: " + colour}</h3>
+    <div>
+        <div> 
+      <h2 style={{ "background-color": "rgb(75, 160, 181)", "color":"#fff"}}>{props.buildingName} Information</h2>
+      </div>
+      <div style={{ "width": "100%",  "overflow":"auto"}}>
+        <h3>{"Severity: " + colour}</h3>
                 <h3>{props.floors? Number(props.floors) + " Floors": ""}</h3>
+                <h3>{props.elevators? Number(props.elevators) + "Elevators": ""}</h3>
                 <h3>{props.barrierFreeWashrooms? "Barrier Free Washrooms" : ""}</h3>
                 <h3>{props.genderNeutralWashrooms? "Gender Neutral Washrooms" : ""}</h3>
                 <h3>{props.automaticButtonEntry? "Automatic Button Entry" : ""}</h3>
-            </Toast.Body>
-        </Toast>
+                </div>
+        </div>
     )
 };

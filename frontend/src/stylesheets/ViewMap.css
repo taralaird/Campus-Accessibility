@@ -1,24 +1,28 @@
 .mapPage {
     display: flex;
+    height: 80%;
+    width: 100%;
+}
+.info{
+
+    display: grid;
+    grid-template-rows: minmax(30%, 30%) minmax(10%,10%) minmax(35%, 35%)
+}
+.infoContainer{
+    flex:25;
+    height: 80%;
+    width: 25%;
+    position: relative;
 }
 
-.info {
-    flex-flow: column-wrap;
-    flex: 25%;
-}
-
-.buildingInfo {
-    align-self: flex-start
-}
-
-.reports {
-    height: 400px;
-    overflow: auto;
-    align-self: flex-end;
+.reports{
+    overflow:auto;
 }
 
 .map-container {
     flex: 75%;
+    height: 80%;
+    width: 75%;
     position: relative;
 }
 

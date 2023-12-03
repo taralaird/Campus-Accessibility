@@ -89,24 +89,24 @@ export default function ViewMap() {
                             <img className="campus-map" alt={"Campus Map"} src={CampusMap} />
                             <div >{buttons}</div>
                         </div>
-                        <div className="info">
-                            <Autocomplete disablePortal
-                                onChange={(e) => { setBuilding(e.target.outerText) }}
-                                id="combo-box-demo"
-                                options={sortedNames}
-                                renderInput={(params) => <TextField {...params} label="Building" />}
-                            />
-                            <BuildingInfo buildingName={building} severity={buttonVariant(0)} className={"buildingInfo"} />
-                            <Toast style={{ "width": "100%" }}>
-                                <Toast.Header closeButton={false}>
-                                    <h1>Reports for {building}</h1>
-                                </Toast.Header>
-                            </Toast>
+                        <div className="infoContainer">
+                                <Autocomplete disablePortal
+                                    onChange={(e) => { setBuilding(e.target.outerText) }}
+                                    id="combo-box-demo"
+                                    options={sortedNames}
+                                    renderInput={(params) => <TextField {...params} label="Building" />}
+                                />
+                                <div className="info">
+                                <BuildingInfo style={{ "width": "100%", "height": "30%","overflow":"auto"}} buildingName={building} severity={buttonVariant(0)} floors={3} elevators ={3} barrierFreeWashrooms = {"Yes"} genderNeutralWashrooms ={"Yes"} automaticButtonEntry = {"No"}/>
+                            <div style={{ "width": "100%", "background-color": "rgb(75, 160, 181)", "color":"#fff"}}>
+                                    <h2 style= {{"overflow":"auto"}}>Reports for {building}</h2>
+                            </div>
                             <div className={"reports"}>
                                 <Report issueDetails={issueDetails} buildingName={"sample building"} reportTitle={"Cafeteria Overflow"} reportType={"Washroom Complaints"} />
                                 <Report issueDetails={issueDetails} buildingName={"sample building"} reportTitle={"Cafeteria Overflow"} reportType={"Washroom Complaints"} />
                                 <Report issueDetails={issueDetails} buildingName={"sample building"} reportTitle={"Cafeteria Overflow"} reportType={"Washroom Complaints"} />
                                 <Report issueDetails={issueDetails} buildingName={"sample building"} reportTitle={"Cafeteria Overflow"} reportType={"Washroom Complaints"} />
+                            </div>
                             </div>
                         </div>
                     </div>
