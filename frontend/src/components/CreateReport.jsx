@@ -21,7 +21,6 @@ function CreateReport() {
     return (
         <body><main>
         <div>
-            {/*<HeaderLogo />*/}
             <NavMenu/>
             <div style ={{ "margin": "0% 10% 0%"}}>
             <h1 style ={{"text-align":"center"}}>Create a New Report</h1>
@@ -59,12 +58,16 @@ function CreateReport() {
 
                 <Button variant="outline-info" onClick={
                     () => {
+                        let tempTitle = String(title);
+                        let tempBuilding = String(building);
+                        let tempReportType = String(reportType);
+                        let tempIssueDetails = String(issueDetails);
                         const json = {
-                            title,
-                            building,
-                            reportType,
-                            issueDetails
-                        }
+                            tempTitle,
+                            tempBuilding,
+                            tempReportType,
+                            tempIssueDetails
+                        };
                         const errors = checkReportErrors(title, building, reportType, issueDetails);
                         if (errors==="none") {
                             // TODO: send json to backend
