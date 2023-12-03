@@ -21,7 +21,6 @@ function CreateReport() {
     return (
         <body><main>
         <div>
-            {/*<HeaderLogo />*/}
             <NavMenu/>
             <div style ={{ "margin": "0% 10% 0%"}}>
             <h1 style ={{"text-align":"center"}}>Create a New Report</h1>
@@ -69,7 +68,7 @@ function CreateReport() {
                             tempReportType,
                             tempIssueDetails
                         };
-                        const errors = checkReportErrors(tempTitle, tempBuilding, tempReportType, tempIssueDetails);
+                        const errors = checkReportErrors(title, building, reportType, issueDetails);
                         if (errors==="none") {
                             // TODO: send json to backend
                             console.log(json);
