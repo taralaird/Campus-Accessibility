@@ -10,7 +10,6 @@ export default function Predictor() {
         <body>
             <main>
                 <div>
-                    {/*<HeaderLogo />*/}
                     <NavMenu/>
                     <h1>Predictor</h1>
                     <Link to="/" ><Button variant="info">Return to Homepage</Button></Link>

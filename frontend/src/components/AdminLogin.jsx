@@ -11,7 +11,6 @@ function AdminLogin() {
     return (
         <body><main>
         <div>
-            {/*<HeaderLogo />*/}
             <NavMenu/>
             <h1>Admin Login</h1>
             <Form>
@@ -26,10 +25,13 @@ function AdminLogin() {
                 </Form.Group>
                 <Button variant="primary" onClick={() => {
                     if (admin && password) {
+                        let tempAdmin = String(admin);
+                        let tempPassword = String(password);
                         const json = {
-                            admin, 
-                            password
-                        }
+                            tempAdmin, 
+                            tempPassword
+                        };
+                        console.log(json);
                         // TODO: send to backend for verification
                     } else {
                         window.alert("fill out both username and password")

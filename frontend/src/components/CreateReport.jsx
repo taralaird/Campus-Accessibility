@@ -59,13 +59,17 @@ function CreateReport() {
 
                 <Button variant="outline-info" onClick={
                     () => {
+                        let tempTitle = String(title);
+                        let tempBuilding = String(building);
+                        let tempReportType = String(reportType);
+                        let tempIssueDetails = String(issueDetails);
                         const json = {
-                            title,
-                            building,
-                            reportType,
-                            issueDetails
-                        }
-                        const errors = checkReportErrors(title, building, reportType, issueDetails);
+                            tempTitle,
+                            tempBuilding,
+                            tempReportType,
+                            tempIssueDetails
+                        };
+                        const errors = checkReportErrors(tempTitle, tempBuilding, tempReportType, tempIssueDetails);
                         if (errors==="none") {
                             // TODO: send json to backend
                             console.log(json);
