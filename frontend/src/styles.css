@@ -143,18 +143,21 @@ main {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    margin: 0.5rem 1rem;
-    width:98%;
+    margin: 0;
+    width:100%;
+    background-color: rgb(75, 160, 181)
     
   }
   
   .contact-us {
-    margin: 0;
+    margin: 0.5rem 1rem;
+    color: #fff
   }
   
   .admin-login-button {
-    margin: 0;
+    margin: 0.5rem 1rem;
     text-align: right;
+    color: #fff
     
   }
   .contact-us a,
@@ -166,10 +169,11 @@ main {
     transition: all 0.3s ease;
     padding:0.4rem;
     line-height: 1;
+    color: #fff
   }
   
   .contact-us a:hover,
   .admin-login-button:hover {
-    color: var(--blue);
+    color: #fff;
     background: rgba(0, 0, 0, 0.05);
   }

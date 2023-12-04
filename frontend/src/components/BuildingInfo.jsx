@@ -12,15 +12,15 @@ export default function BuildingInfo(props) {
     return (
     <div>
         <div> 
-      <h2 style={{ "background-color": "rgb(75, 160, 181)", "color":"#fff"}}>{props.buildingName} Information</h2>
+      <h2 style={{ "background-color": "rgb(75, 160, 181)", "color":"#fff", "font-weight": "bold"}}>{props.buildingName} Information</h2>
       </div>
       <div style={{ "width": "100%",  "overflow":"auto"}}>
-        <h3>{"Severity: " + colour}</h3>
-                <h3>{props.floors? Number(props.floors) + " Floors": ""}</h3>
-                <h3>{props.elevators? Number(props.elevators) + "Elevators": ""}</h3>
-                <h3>{props.barrierFreeWashrooms? "Barrier Free Washrooms" : ""}</h3>
-                <h3>{props.genderNeutralWashrooms? "Gender Neutral Washrooms" : ""}</h3>
-                <h3>{props.automaticButtonEntry? "Automatic Button Entry" : ""}</h3>
+        <h4>{"Severity: " + colour}</h4>
+                <h4>{props.floors? Number(props.floors) + " Floors": ""}</h4>
+                <h4>{props.elevators? Number(props.elevators) + "Elevators": ""}</h4>
+                <h4>{props.barrierFreeWashrooms? "Barrier Free Washrooms" : ""}</h4>
+                <h4>{props.genderNeutralWashrooms? "Gender Neutral Washrooms" : ""}</h4>
+                <h4>{props.automaticButtonEntry? "Automatic Button Entry" : ""}</h4>
                 </div>
         </div>
     )

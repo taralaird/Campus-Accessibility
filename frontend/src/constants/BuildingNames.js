@@ -26,7 +26,6 @@ export const buildingNames = [
     "Music Building",
     "Natural Science Centre",
     "North Campus Building",
-    "Ontario Hall Residence",
     "Physics and Astronomy Building",
     "Robarts Research Institute",
     "Siebens-Drake Research Institute",

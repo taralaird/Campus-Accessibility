@@ -1,39 +1,71 @@
+
+
 .mapPage {
     display: flex;
-    height: 80%;
+    height: 100%;
     width: 100%;
-}
-.info{
-
-    display: grid;
-    grid-template-rows: minmax(30%, 30%) minmax(10%,10%) minmax(35%, 35%)
-}
-.infoContainer{
-    flex:25;
-    height: 80%;
-    width: 25%;
     position: relative;
 }
 
-.reports{
-    overflow:auto;
+.info {
+
+    display: grid;
+}
+
+.infoContainer {
+    flex: 24;
+    height: 100%;
+    width: 25%;
+    position: relative;
+}
+.map-container.reportsContainer {
+    flex: 25;
+}
+.reports {
+    overflow-y: scroll;
+    height:60%
 }
 
 .map-container {
-    flex: 75%;
-    height: 80%;
+    flex: 75;
+    height: 100%;
     width: 75%;
     position: relative;
 }
 
 .campus-map {
+    align-items: flex-end;
     width: 100%;
-    height: auto;
+    height: 100;
     margin-top: 0;
 
 }
 
 .map-container .buttons {
     position: absolute;
-    
+
+}
+
+.map-container.returnButton {
+    position: absolute;
+
+}
+
+.returnButton-link {
+    color: #fff;
+    text-decoration: none;
+}
+
+.returnButton:hover {
+    background-color: rgb(75, 160, 181);
+    border-color: rgb(75, 160, 181);
+    color: #fff;
+    box-shadow: 0 0 10px rgba(74, 161, 181, 0.8);
+}
+
+.returnButton:focus,
+.returnButton:active {
+    background-color: rgb(75, 160, 181);
+    border-color: rgb(75, 160, 181);
+    color: #fff;
 }
