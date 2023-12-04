@@ -188,7 +188,7 @@ export default function ViewMap() {
 
         }
         return (
-            <Button className="buttons" variant={buttonVariant(0, false)} style={styling} onClick={() => { setBuilding(value); }}></Button>
+            <Button className="buttons" variant={buttonVariant(0, building!==value)} style={styling} onClick={() => { setBuilding(value); }}></Button>
         )
     });
     // TODO: style this group
@@ -205,33 +205,29 @@ export default function ViewMap() {
                 <div className="map-container">
                     <img className="campus-map" alt={"Campus Map"} src={CampusMap} />
                     <div >{buttons}</div>
-                    <div><Button sz="large" className="returnButton" style={{"position": "absolute", "top": "95%", "left": "87%", "transform": "translate(0%, 0%)", "background-color": "rgb(75, 160, 181)", "border-color": "rgb(75, 160, 181)", "font-weight": "bold"}}><Link to="/" className="returnButton-link">Contract Map</Link> <ArrowsAngleContract /> </Button>
-                </div>
+                    <div><Button sz="large" className="returnButton" style={{ "position": "absolute", "top": "95%", "left": "87%", "transform": "translate(0%, 0%)", "background-color": "rgb(75, 160, 181)", "border-color": "rgb(75, 160, 181)", "font-weight": "bold" }}><Link to="/" className="returnButton-link">Contract Map</Link> <ArrowsAngleContract /> </Button>
+                    </div>
                 </div>
                 <div className="infoContainer">
-                    <Autocomplete disablePortal
-                        onChange={(e) => { setBuilding(e.target.outerText) }}
-                        id="combo-box-demo"
-                        options={sortedNames}
-                        renderInput={(params) => <TextField {...params} label="Building" />}
-                    />
-                    <div className="info">
-                        <BuildingInfo style={{ "width": "100%", "overflow": "auto" }} buildingName={building} severity={buttonVariant(0)} floors={3} elevators={3} barrierFreeWashrooms={"Yes"} genderNeutralWashrooms={"Yes"} automaticButtonEntry={"No"} />
+                        <Autocomplete disablePortal
+                            onChange={(e) => { setBuilding(e.target.outerText) }}
+                            id="combo-box-demo"
+                            options={sortedNames}
+                            renderInput={(params) => <TextField {...params} label="Building" />}
+                        />
+                        <BuildingInfo buildingName={building} severity={buttonVariant(0)} floors={3} elevators={3} barrierFreeWashrooms={"Yes"} genderNeutralWashrooms={"Yes"} automaticButtonEntry={"No"} />
                         <div style={{ "width": "100%", "background-color": "rgb(75, 160, 181)", "color": "#fff" }}>
-                            <h2 style={{"font-weight": "bold" }}>Reports for {building}</h2>
+                            <h2 style={{ "font-weight": "bold" }}>Reports for {building}</h2>
                         </div>
-                        <div className="reportsContainer">
-                        <div className={"reports"}>
-                            <Report issueDetails={issueDetails} buildingName={"sample building"} reportTitle={"Cafeteria Overflow"} reportType={"Washroom Complaints"} />
-                            <Report issueDetails={issueDetails} buildingName={"sample building"} reportTitle={"Cafeteria Overflow"} reportType={"Washroom Complaints"} />
-                            <Report issueDetails={issueDetails} buildingName={"sample building"} reportTitle={"Cafeteria Overflow"} reportType={"Washroom Complaints"} />
-                            <Report issueDetails={issueDetails} buildingName={"sample building"} reportTitle={"Cafeteria Overflow"} reportType={"Washroom Complaints"} />
-                        </div>
-                        </div>
+                    <div className="report">
+                        <Report issueDetails={issueDetails} buildingName={"sample building"} reportTitle={"Cafeteria Overflow"} reportType={"Washroom Complaints"} />
+                        <Report issueDetails={issueDetails} buildingName={"sample building"} reportTitle={"Cafeteria Overflow"} reportType={"Washroom Complaints"} />
+                        <Report issueDetails={issueDetails} buildingName={"sample building"} reportTitle={"Cafeteria Overflow"} reportType={"Washroom Complaints"} />
+                        <Report issueDetails={issueDetails} buildingName={"sample building"} reportTitle={"Cafeteria Overflow"} reportType={"Washroom Complaints"} />
                     </div>
                 </div>
             </div>
-            <Footer/>
+            <Footer />
         </div>
 
     )

@@ -17,7 +17,7 @@ export default function BuildingInfo(props) {
       <div style={{ "width": "100%",  "overflow":"auto"}}>
         <h4>{"Severity: " + colour}</h4>
                 <h4>{props.floors? Number(props.floors) + " Floors": ""}</h4>
-                <h4>{props.elevators? Number(props.elevators) + "Elevators": ""}</h4>
+                <h4>{props.elevators? Number(props.elevators) + " Elevators": ""}</h4>
                 <h4>{props.barrierFreeWashrooms? "Barrier Free Washrooms" : ""}</h4>
                 <h4>{props.genderNeutralWashrooms? "Gender Neutral Washrooms" : ""}</h4>
                 <h4>{props.automaticButtonEntry? "Automatic Button Entry" : ""}</h4>
