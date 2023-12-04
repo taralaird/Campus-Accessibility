@@ -21,7 +21,6 @@ export default function ViewReports() {
                     <NavMenu/>
                     <h1>Reports</h1>
                     <Report issueDetails={issueDetails} buildingName={"sample building"} reportTitle={"Cafeteria Popcorn Overflow"} reportType={reportType("4")}  />
-                    <Link to="/" ><Button variant="info">Return to Homepage</Button></Link>
                     
                 </div>
             </main>

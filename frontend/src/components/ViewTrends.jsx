@@ -22,7 +22,6 @@ export default function ViewTrends() {
                     <h1>Trends</h1>
                     <BarChart title={"sample title"} subtitle={"sample subtitle"} note={"sample note"} />
                     <br />
-                    <Link to="/" ><Button variant="info" style= {{"margin-bottom" :"100px"}} >Return to Homepage</Button></Link> 
                     
                 </div>
             </main>

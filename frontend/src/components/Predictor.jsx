@@ -3,6 +3,7 @@ import Button from 'react-bootstrap/Button';
 import { Link } from "react-router-dom";
 import NavMenu from "./NavMenu";
 import Form from 'react-bootstrap/Form';
+import "../styles.css";
 
 import Footer from "./Footer";
 import checkPredictorErrors from "../functions/checkPredictorErrors";
@@ -20,7 +21,8 @@ export default function Predictor() {
             <main>
                 <div>
                     <NavMenu/>
-                    <h1>Predictor</h1>
+                    <div style ={{ "margin": "0% 10% 0%"}}>
+                    <h1 style ={{"text-align":"center"}}>Predictor</h1>
                     <Form>
                         <Form.Group className="mb-3">
                             <Form.Label>Number of Floors</Form.Label>
@@ -39,7 +41,7 @@ export default function Predictor() {
                         <Form.Group className="mb-3">
                             <Form.Check type="checkbox"  onChange={(e) => {setAutomaticButtonEntry(!automaticButtonEntry);}} label="Automatic Button Entry" />
                         </Form.Group>
-                        <Button variant="outline-info" onClick={() => {
+                        <Button variant="info" className="expand-button" style={{"background-color": "rgb(75, 160, 181)","color": "#fff", "border-color": "rgb(75, 160, 181)", "font-weight": "bold" }} onClick={() => {
                             let tempNumFloors = Number(numFloors);
                             let tempNumElevators = Number(numElevators);
                             let tempBarrierFreeWashrooms = Boolean(barrierFreeWashrooms);
@@ -52,8 +54,8 @@ export default function Predictor() {
                                 tempGenderNeutralWashrooms,
                                 tempAutomaticButtonEntry
                             };
-                            if (checkPredictorErrors(numFloors, numElevators, barrierFreeWashrooms, genderNeutralWashrooms, automaticButtonEntry)) {
-                                window.alert("There is an issue with the form.\nEnsure the first two fields have numbers.")
+                            if (checkPredictorErrors(tempNumFloors, tempNumElevators, tempBarrierFreeWashrooms, tempGenderNeutralWashrooms, tempAutomaticButtonEntry)) {
+                                window.alert("There is an issue with the form.\nEnsure the first two fields have numbers.\nEnsure the first field has a positive number.")
                             } else {
                                 console.log(json);
                                 // TODO: send data to neural net
@@ -63,7 +65,7 @@ export default function Predictor() {
                         </Button>
                     </Form>
                     <br />
-                    <Link to="/" ><Button variant="info">Return to Homepage</Button></Link>
+                    </div>
                 </div>
             </main>
             <Footer />

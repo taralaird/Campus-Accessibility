@@ -14,7 +14,7 @@ import NavMenu from "./NavMenu";
 import Footer from "./Footer";
 import Report from "./Report";
 import Toast from 'react-bootstrap/Toast';
-import { ArrowsAngleContract } from "react-bootstrap-icons";
+import { ArrowsAngleContract, PlusCircle } from "react-bootstrap-icons";
 import "../styles.css";
 
 /* once we have a backend, we should build a map
@@ -207,18 +207,22 @@ export default function ViewMap() {
                     <div >{buttons}</div>
                     <div><Button sz="large" className="returnButton" style={{ "position": "absolute", "top": "95%", "left": "87%", "transform": "translate(0%, 0%)", "background-color": "rgb(75, 160, 181)", "border-color": "rgb(75, 160, 181)", "font-weight": "bold" }}><Link to="/" className="returnButton-link">Contract Map</Link> <ArrowsAngleContract /> </Button>
                     </div>
+                    <div><Button sz="large" className="returnButton" style={{ "position": "absolute", "top": "95%", "left": "75%", "transform": "translate(0%, 0%)", "background-color": "rgb(75, 160, 181)", "border-color": "rgb(75, 160, 181)", "font-weight": "bold" }}><Link to="/createReport" className="returnButton-link">Add Report</Link> <PlusCircle /> </Button>
+                    </div>
                 </div>
                 <div className="infoContainer">
                         <Autocomplete disablePortal
                             onChange={(e) => { setBuilding(e.target.outerText) }}
                             id="combo-box-demo"
                             options={sortedNames}
-                            renderInput={(params) => <TextField {...params} label="Building" />}
-                        />
-                        <BuildingInfo buildingName={building} severity={buttonVariant(0)} floors={3} elevators={3} barrierFreeWashrooms={"Yes"} genderNeutralWashrooms={"Yes"} automaticButtonEntry={"No"} />
+                            renderInput={(params) => <TextField {...params} label="Building"></TextField>}
+                            value= {building} />
+                            {/*DB TODO: Need to get building info based on building variable = buildingName and fill out BuildingInfo fields*/}
+                        <BuildingInfo buildingName={building} severity={buttonVariant(0)} floors={3} elevators={3} barrierFreeWashrooms={true} genderNeutralWashrooms={false} automaticButtonEntry={true} />
                         <div style={{ "width": "100%", "background-color": "rgb(75, 160, 181)", "color": "#fff" }}>
                             <h2 style={{ "font-weight": "bold" }}>Reports for {building}</h2>
                         </div>
+                        {/*DB TODO: Need to get all reports based on building variable = buildingName, for each report fill out Report fields*/}
                     <div className="report">
                         <Report issueDetails={issueDetails} buildingName={"sample building"} reportTitle={"Cafeteria Overflow"} reportType={"Washroom Complaints"} />
                         <Report issueDetails={issueDetails} buildingName={"sample building"} reportTitle={"Cafeteria Overflow"} reportType={"Washroom Complaints"} />

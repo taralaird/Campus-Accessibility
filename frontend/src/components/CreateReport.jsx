@@ -8,6 +8,7 @@ import checkReportErrors from "../functions/createReportErrors";
 import { buildingNames } from "../constants/BuildingNames";
 import NavMenu from "./NavMenu";
 import Footer from "./Footer";
+import "../styles.css";
 
 function CreateReport() {
 
@@ -55,8 +56,8 @@ function CreateReport() {
                     <Form.Label>Issue Details</Form.Label>
                     <Form.Control onChange={(e) => {setIssueDetails(e.target.value);}} placeholder="Share the details of the observed accessibility issue." />
                 </Form.Group>
-
-                <Button variant="outline-info" onClick={
+                {/*DB TODO: Get temp values as fields for new report,push to DB*/}
+                <Button variant="info" className="expand-button" style={{"background-color": "rgb(75, 160, 181)","color": "#fff", "border-color": "rgb(75, 160, 181)", "font-weight": "bold" }} onClick={
                     () => {
                         let tempTitle = String(title);
                         let tempBuilding = String(building);
@@ -77,11 +78,12 @@ function CreateReport() {
                         }
                     }
                 }>
+
                     Submit
                 </Button>
             </Form>
             <br />
-            <Link to="/map" ><Button variant="outline-danger">Cancel</Button></Link>
+            <Link to="/map" ><Button className="cancel-button" style={{"background-color": "red","color": "#fff", "border-color": "red", "font-weight": "bold" }}>Cancel</Button></Link>
         </div>
         </div>
         </main>

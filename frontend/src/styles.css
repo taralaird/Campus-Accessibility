@@ -113,6 +113,9 @@ main {
 .expand-button:active {
   color: var(--white);
 }
+button.cancel-button:hover {
+  box-shadow: 0 0 10px red;
+}
   .newest-sec {
     flex: 0 0 25%; 
     background-color:var(--blue);

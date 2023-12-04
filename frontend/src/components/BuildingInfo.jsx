@@ -16,11 +16,11 @@ export default function BuildingInfo(props) {
       </div>
       <div style={{ "width": "100%",  "overflow":"auto"}}>
         <h4>{"Severity: " + colour}</h4>
-                <h4>{props.floors? Number(props.floors) + " Floors": ""}</h4>
-                <h4>{props.elevators? Number(props.elevators) + " Elevators": ""}</h4>
-                <h4>{props.barrierFreeWashrooms? "Barrier Free Washrooms" : ""}</h4>
-                <h4>{props.genderNeutralWashrooms? "Gender Neutral Washrooms" : ""}</h4>
-                <h4>{props.automaticButtonEntry? "Automatic Button Entry" : ""}</h4>
+                <h4>{props.floors? "Floors: "+ Number(props.floors): ""}</h4>
+                <h4>{props.elevators? "Elevators: "+ Number(props.elevators): ""}</h4>
+                <h4>{props.barrierFreeWashrooms? "Barrier Free Washrooms: Yes" : "Barrier Free Washrooms: No"}</h4>
+                <h4>{props.genderNeutralWashrooms? "Gender Neutral Washrooms: Yes" : "Gender Neutral Washrooms: No"}</h4>
+                <h4>{props.automaticButtonEntry? "Automatic Button Entry: Yes" : "Automatic Button Entry: No"}</h4>
                 </div>
         </div>
     )
