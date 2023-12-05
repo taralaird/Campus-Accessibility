@@ -1,10 +1,6 @@
 import censorStrings from "./censorStrings";
 
 export default function checkReportErrors(title, building, reportType, issueDetails) {
-    console.log(title);
-    console.log(building);
-    console.log(reportType);
-    console.log(issueDetails);
     if (!title || !building || !reportType || !issueDetails) {
         return "error: form is not filled out";
     }
