@@ -30,18 +30,23 @@ function AboutUs() {
             <div style = {{"text-align":"center"}}>
                 <div class="inline-block">
                     <img className="ltPic" alt={"ltPic"} src={ltPic} style={{"width":"200px", "height":"200px"}}/>
+                    <div className="name">Laura Tidy</div>
                 </div>
                 <div class="inline-block">
-                    <img className="ocPic" alt={"ltPic"} src={ocPic} style={{"width":"200px", "height":"200px"}}/>
+                    <img className="ocPic" alt={"ocPic"} src={ocPic} style={{"width":"200px", "height":"200px"}}/>
+                    <div className="name">Ore Collins</div>
                 </div>
                 <div class="inline-block">
-                    <img className="ohPic" alt={"ltPic"} src={ohPic} style={{"width":"200px", "height":"200px"}}/>
+                    <img className="ohPic" alt={"ohPic"} src={ohPic} style={{"width":"200px", "height":"200px"}}/>
+                    <div className="name">Olivia Howard</div>
                 </div>
                 <div class="inline-block">
-                    <img className="pmPic" alt={"ltPic"} src={pmPic} style={{"width":"200px", "height":"200px"}}/>
+                    <img className="pmPic" alt={"pmPic"} src={pmPic} style={{"width":"200px", "height":"200px"}}/>
+                    <div className="name">Parsa Moenini</div>
                 </div>
                 <div class="inline-block">
-                    <img className="tlPic" alt={"ltPic"} src={tlPic} style={{"width":"200px", "height":"200px"}}/>
+                    <img className="tlPic" alt={"tlPic"} src={tlPic} style={{"width":"200px", "height":"200px"}}/>
+                    <div className="name">Tara Laird</div>
                 </div>
             
             </div>
