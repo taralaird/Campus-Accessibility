@@ -15,6 +15,7 @@ function NavMenu(){
             </div>
             <div className ="button-container">
             <ButtonGroup vertical>
+            <Button variant="link" className="button"><Link to="/help" className="button-link">Help</Link></Button>
             <Button variant="link" className="button"><Link to="/map" className="button-link">View Map</Link></Button>
             <Button variant="link" className="button"><Link to="/createReport" className="button-link">Create Report</Link></Button>
             <Button variant="link" className="button"><Link to="/trends" className="button-link">View Trends</Link></Button>

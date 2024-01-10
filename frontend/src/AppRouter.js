@@ -7,6 +7,7 @@ import Predictor from './components/Predictor';
 import ViewMap from './components/ViewMap';
 import ViewReports from './components/ViewReports';
 import ViewTrends from './components/ViewTrends';
+import Help from './components/Help';
 
 const AppRouter = () => (
     <Router>
@@ -20,6 +21,7 @@ const AppRouter = () => (
                 <Route path="/map" element={<ViewMap />} />
                 <Route path='trends' element={<ViewTrends />} />
                 <Route path='reports' element={<ViewReports />} />
+                <Route path="/help" element={<Help />} />
             </Routes>
         </div>
     </Router>
