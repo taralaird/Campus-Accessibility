@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import Button from 'react-bootstrap/Button';
 import { Link } from "react-router-dom";
 import HeaderLogo from "./HeaderLogo";
@@ -16,6 +16,8 @@ import Report from "./Report";
 import Toast from 'react-bootstrap/Toast';
 import { ArrowsAngleContract, PlusCircle } from "react-bootstrap-icons";
 import "../styles.css";
+import axios, {isCancel, AxiosError} from 'axios';
+
 
 /* once we have a backend, we should build a map
    with the building name as key and the number of issues as value */
@@ -26,6 +28,30 @@ export default function ViewMap() {
         initialBuilding = sortedNames[0];
     }
     const [building, setBuilding] = useState(initialBuilding);
+
+    const buildingInfoMap = new Map();
+
+    useEffect(() => {
+        axios.get("http://localhost:8081/buildingInfo")
+            .then((res) => {
+                if (res && res.data) {
+                    let temp;
+                    for (let i=0; i<res?.data?.length; i++) {
+                        temp = {
+                            automaticButtonEntry: res?.data[i]?.AutomaticButtonEntry==="y"? true : false,
+                            barrierFreeWashrooms: res?.data[i]?.BarrierFreeWashrooms==="y"? true: false,
+                            genderNeutralWashrooms: res?.data[i]?.GenderNeutralWashrooms==="y"? true: false,
+                            numberOfFloors: Number(res?.data[i]?.NumberOfFloors),
+                            numberOfElevators: Number(res?.data[i]?.NumberOfElevators),
+                        };
+                        buildingInfoMap.set(res?.data[i]?.BuildingName, temp);
+                    }
+                }
+                console.log(buildingInfoMap.get(building).numberOfFloors);
+            })
+            .catch((err) => console.error(err));
+    }, [])
+
     const buttons = sortedNames.map((value, index) => {
         let styling = {};
         switch (value) {
@@ -197,7 +223,7 @@ export default function ViewMap() {
     )
 
 
-    const issueDetails = "whatever";
+    const issueDetails = "TEST";
     return (
         <div>
             <NavMenu />

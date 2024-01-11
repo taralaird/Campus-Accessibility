@@ -4,6 +4,12 @@ export default function checkReportErrors(title, building, reportType, issueDeta
     if (!title || !building || !reportType || !issueDetails) {
         return "error: form is not filled out";
     }
+    else if (title.length > 255) {
+        return "error: title is too long";
+    } 
+    else if (issueDetails.length > 1024) {
+        return "error: issue details is too long";
+    }
     else if (!(reportType==="1" || reportType==="2" || reportType==="3" || reportType==="4")) {
         return "error: select a report type";
     }
