@@ -22,6 +22,7 @@ import axios, {isCancel, AxiosError} from 'axios';
 /* once we have a backend, we should build a map
    with the building name as key and the number of issues as value */
 export default function ViewMap() {
+    
     let initialBuilding = null;
     const sortedNames = buildingNames.sort();
     if (sortedNames && sortedNames[0]) {
@@ -51,6 +52,12 @@ export default function ViewMap() {
             })
             .catch((err) => console.error(err));
     }, [])
+
+    
+    useEffect(() => {
+        axios.get("http://localhost:8081/reportByBuilding", {params: {buildingName: building}})
+            .then((res) => console.log(res));
+    }, [building])
 
     const buttons = sortedNames.map((value, index) => {
         let styling = {};

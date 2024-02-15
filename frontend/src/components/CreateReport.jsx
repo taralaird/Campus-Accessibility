@@ -75,7 +75,7 @@ function CreateReport() {
                 </Form.Group>
                 {/*DB TODO: Get temp values as fields for new report,push to DB*/}
                 <Button variant="info" className="expand-button" style={{"background-color": "rgb(75, 160, 181)","color": "#fff", "border-color": "rgb(75, 160, 181)", "font-weight": "bold" }} onClick={
-                    () => {
+                    async () => {
                         let tempTitle = String(title);
                         let tempBuilding = String(building);
                         let tempReportType = String(reportType);
@@ -84,7 +84,7 @@ function CreateReport() {
                         const offset = d.getTimezoneOffset();
                         d = new Date(d.getTime() - (offset*60000))
                         const tempTime = d.toISOString().split('T');
-                        const body = {
+                        const reqBody = {
                             reportTitle: tempTitle,
                             reportDate: tempTime[0] + " " + tempTime[1].split(".")[0],
                             buildingName: tempBuilding,
@@ -94,11 +94,11 @@ function CreateReport() {
                         const errors = checkReportErrors(title, building, reportType, issueDetails);
                         if (errors==="none") {
                             // TODO: send json to backend
-                            console.log(body);
-                            /*
-                            axios.post('http://localhost:8081/submitReport', {body: body})
+                            await axios.post('http://localhost:8081/submitReport',
+                                {body: {reportTitle: title, reportDate: tempTime[0] + " " + tempTime[1].split(".")[0], buildingName: building, reportType: reportType, reportNote: issueDetails}}
+                            )
                                 .then((res) => console.log(res))
-                                .catch((err) => console.error(err));*/
+                                .catch((err) => console.error(err));
                             
 
                         } else {

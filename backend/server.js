@@ -1,9 +1,13 @@
 const express = require('express');
 const mysql = require('mysql');
 const cors = require('cors');
+const bodyParser = require('body-parser');
 
 const app = express();
 app.use(cors());
+app.use(bodyParser.urlencoded({extended: true}));
+app.use(bodyParser.json());
+app.use(bodyParser.raw());
 
 const db = mysql.createPool({
     host: "localhost",
@@ -30,10 +34,11 @@ app.get('/buildingInfo', (req, res)=>{
 
 app.get('/reportByBuilding', (req, res)=>{
     const buildingName = req.query.buildingName;
+    console.log(req.query.buildingName)
     const sqlSelect = 
     `SELECT ReportTitle, ReportDate, BuildingName, ReportType, ReportNote
     FROM reports
-    WHERE ReportTitle IS NOT NULL`;
+    WHERE BuildingName = ? AND ReportTitle IS NOT NULL`;
     db.query(sqlSelect,[buildingName], (err, data)=> {
         if(err) return res.json(err);
         return res.json(data);
@@ -52,16 +57,15 @@ app.get('/buildingDropdown', (req, res)=>{
 });
 
 app.post('/submitReport', (req, res) => {
-    const sql = "INSERT INTO reports (`ReportTitle`, `ReportDate`, `BuildingName`, `ReportType`, `ReportNote`) Values (?)";
-    const values = [
-        req.body.reportTitle,
-        req.body.reportDate,
-        req.body.buildingName,
-        req.body.reportType,
-        req.body.reportNote
-    ]
-    console.log(req);
-    db.query(sql, [values], (err, data) => {
+    const sql = "INSERT INTO reports (`ReportTitle`, `ReportDate`, `BuildingName`, `ReportType`, `ReportNote`) Values (?, ?, ?, ?, ?)";
+    console.log(Object.keys(req.body));
+    db.query(sql, [
+        req.body.body.reportTitle,
+        req.body.body.reportDate,
+        req.body.body.buildingName,
+        req.body.body.reportType,
+        req.body.body.reportNote
+    ], (err, data) => {
         if(err) return res.json(err);
         return res.json(data);
     })
