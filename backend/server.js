@@ -12,7 +12,7 @@ app.use(bodyParser.raw());
 const db = mysql.createPool({
     host: "localhost",
     user: "root",
-    password: "",
+    password: "Tlaird.1700",
     database: "campus_accessibility"
 });
 
@@ -35,10 +35,31 @@ app.get('/buildingInfo', (req, res)=>{
 app.get('/reportByBuilding', (req, res)=>{
     const buildingName = req.query.buildingName;
     console.log(req.query.buildingName)
+    let sqlSelect = "";
+    if (req.query.buildingName === "All") {
+        sqlSelect = 
+        `SELECT ReportTitle, ReportDate, BuildingName, ReportType, ReportNote
+        FROM reports
+        WHERE ReportTitle IS NOT NULL`;    
+    } else {
+        sqlSelect = 
+        `SELECT ReportTitle, ReportDate, BuildingName, ReportType, ReportNote
+        FROM reports
+        WHERE BuildingName = ? AND ReportTitle IS NOT NULL`;
+    }
+    db.query(sqlSelect,[buildingName], (err, data)=> {
+        if(err) return res.json(err);
+        return res.json(data);
+    })
+});
+
+app.get('/infobyBuilding', (req, res)=>{
+    const buildingName = req.query.buildingName;
+    console.log(req.query.buildingName)
     const sqlSelect = 
-    `SELECT ReportTitle, ReportDate, BuildingName, ReportType, ReportNote
-    FROM reports
-    WHERE BuildingName = ? AND ReportTitle IS NOT NULL`;
+    `SELECT BuildingName, NumberOfFloors, NumberofElevators, BarrierFreeWashrooms, GenderNeutralWashrooms, AutomaticButtonEntry
+    FROM building_information
+    WHERE BuildingName = ?`;
     db.query(sqlSelect,[buildingName], (err, data)=> {
         if(err) return res.json(err);
         return res.json(data);

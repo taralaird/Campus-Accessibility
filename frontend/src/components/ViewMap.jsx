@@ -32,32 +32,56 @@ export default function ViewMap() {
 
     const buildingInfoMap = new Map();
 
+    const [buildingInfo, setBuildingInfo] = useState([])
+
+    const [numFloors, setNumFloors] = useState(null)
+    const [numElevators, setNumElevators] = useState(null)
+    const [autoButton, setAutoButton] = useState(null)
+    const [genderBath, setGenderBath] = useState(null)
+    const [barrierFree, setBarrierFree] = useState(null)
+    const [reportList, setReports] = useState([])
+
     useEffect(() => {
         axios.get("http://localhost:8081/buildingInfo")
             .then((res) => {
                 if (res && res.data) {
-                    let temp;
                     for (let i=0; i<res?.data?.length; i++) {
-                        temp = {
-                            automaticButtonEntry: res?.data[i]?.AutomaticButtonEntry==="y"? true : false,
-                            barrierFreeWashrooms: res?.data[i]?.BarrierFreeWashrooms==="y"? true: false,
-                            genderNeutralWashrooms: res?.data[i]?.GenderNeutralWashrooms==="y"? true: false,
-                            numberOfFloors: Number(res?.data[i]?.NumberOfFloors),
-                            numberOfElevators: Number(res?.data[i]?.NumberOfElevators),
-                        };
-                        buildingInfoMap.set(res?.data[i]?.BuildingName, temp);
+                        if (res?.data[i]?.BuildingName === building) {
+                            setAutoButton(res?.data[i]?.AutomaticButtonEntry==="y"? true : false)
+                            setBarrierFree(res?.data[i]?.BarrierFreeWashrooms==="y"? true: false)
+                            setGenderBath(res?.data[i]?.GenderNeutralWashrooms==="y"? true: false)
+                            setNumElevators(Number(res?.data[i]?.NumberofElevators))
+                            setNumFloors(Number(res?.data[i]?.NumberOfFloors))
+                            break;
+                        }
                     }
                 }
-                console.log(buildingInfoMap.get(building).numberOfFloors);
             })
             .catch((err) => console.error(err));
-    }, [])
+    }, [building])
+/*
+    
+  useEffect(() => {
+    axios.get("https://localhost:8081/infobyBuilding", {params: {buildingName: building}})
+      .then((result) => {
+        console.log(result);
+      })
+      .catch((error) => console.log(error));
+  }, [building]); */
 
+  
     
     useEffect(() => {
         axios.get("http://localhost:8081/reportByBuilding", {params: {buildingName: building}})
-            .then((res) => console.log(res));
-    }, [building])
+            .then((res) => {
+                const reports = res.data.map(((value) => {
+                    return (
+                        <Report reportTitle={value.ReportTitle} buildingName={value.BuildingName} reportType={value.ReportType} issueDetails={value.ReportNote} />
+                    )
+                }))
+                setReports(reports)
+    })
+}, [building])
 
     const buttons = sortedNames.map((value, index) => {
         let styling = {};
@@ -249,18 +273,17 @@ export default function ViewMap() {
                             id="combo-box-demo"
                             options={sortedNames}
                             renderInput={(params) => <TextField {...params} label="Building"></TextField>}
-                            value= {building} />
-                            {/*DB TODO: Need to get building info based on building variable = buildingName and fill out BuildingInfo fields*/}
-                        <BuildingInfo buildingName={building} severity={buttonVariant(0)} floors={3} elevators={3} barrierFreeWashrooms={true} genderNeutralWashrooms={false} automaticButtonEntry={true} />
+                            value= {building} 
+                            />
+                        
+                            <BuildingInfo buildingName={building} severity={buttonVariant(0)} floors={numFloors} elevators={numElevators} barrierFreeWashrooms={barrierFree} genderNeutralWashrooms={genderBath} automaticButtonEntry={autoButton} />
+                            
                         <div style={{ "width": "100%", "background-color": "rgb(75, 160, 181)", "color": "#fff" }}>
                             <h2 style={{ "font-weight": "bold" }}>Reports for {building}</h2>
                         </div>
                         {/*DB TODO: Need to get all reports based on building variable = buildingName, for each report fill out Report fields*/}
                     <div className="report">
-                        <Report issueDetails={issueDetails} buildingName={"sample building"} reportTitle={"Cafeteria Overflow"} reportType={"Washroom Complaints"} />
-                        <Report issueDetails={issueDetails} buildingName={"sample building"} reportTitle={"Cafeteria Overflow"} reportType={"Washroom Complaints"} />
-                        <Report issueDetails={issueDetails} buildingName={"sample building"} reportTitle={"Cafeteria Overflow"} reportType={"Washroom Complaints"} />
-                        <Report issueDetails={issueDetails} buildingName={"sample building"} reportTitle={"Cafeteria Overflow"} reportType={"Washroom Complaints"} />
+                        {reportList}
                     </div>
                 </div>
             </div>

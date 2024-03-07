@@ -9,7 +9,7 @@ export default function Report(props) {
             </Toast.Header>
             <Toast.Body>
                 <h3>{props.buildingName}</h3>
-                <h3>{props.reportType}</h3>
+                <h3>{props.reportType === "1" ? "Washroom Complaint" : props.reportType === "2" ? "Elevator Complaint" : props.reportType === "3" ? "Automatic Door Complaint" : props.reportType ? "General Complaint" : "error"}</h3>
                 <p>{props.issueDetails}</p>
             </Toast.Body>
         </Toast>
