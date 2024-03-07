@@ -7,7 +7,6 @@ function Footer() {
         <div className = "footer" >
             <footer>
             <p className="contact-us"><a href="mailto:campusaccessibility23@gmail.com" >Contact Us </a></p> 
-            <Link to="/adminLogin" className="admin-login-button">Admin Login</Link>
             <Link to="/aboutUs" className="about-us-button">About Us</Link>
             </footer>
         </div>

@@ -42,7 +42,7 @@ function AboutUs() {
                 </div>
                 <div class="inline-block">
                     <img className="pmPic" alt={"pmPic"} src={pmPic} style={{"width":"200px", "height":"200px"}}/>
-                    <div className="name">Parsa Moenini</div>
+                    <div className="name">Parsa Moeini</div>
                 </div>
                 <div class="inline-block">
                     <img className="tlPic" alt={"tlPic"} src={tlPic} style={{"width":"200px", "height":"200px"}}/>
