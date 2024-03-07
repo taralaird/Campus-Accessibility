@@ -8,6 +8,7 @@ import ViewMap from './components/ViewMap';
 import ViewReports from './components/ViewReports';
 import ViewTrends from './components/ViewTrends';
 import Help from './components/Help';
+import DeleteReports from './components/DeleteReports';
 
 const AppRouter = () => (
     <Router>
@@ -22,6 +23,7 @@ const AppRouter = () => (
                 <Route path='trends' element={<ViewTrends />} />
                 <Route path='reports' element={<ViewReports />} />
                 <Route path="/help" element={<Help />} />
+                <Route path="/delete" element={<DeleteReports />} />
             </Routes>
         </div>
     </Router>

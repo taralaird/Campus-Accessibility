@@ -38,12 +38,12 @@ app.get('/reportByBuilding', (req, res)=>{
     let sqlSelect = "";
     if (req.query.buildingName === "All") {
         sqlSelect = 
-        `SELECT ReportTitle, ReportDate, BuildingName, ReportType, ReportNote
+        `SELECT Reportid, ReportTitle, ReportDate, BuildingName, ReportType, ReportNote
         FROM reports
         WHERE ReportTitle IS NOT NULL`;    
     } else {
         sqlSelect = 
-        `SELECT ReportTitle, ReportDate, BuildingName, ReportType, ReportNote
+        `SELECT Reportid, ReportTitle, ReportDate, BuildingName, ReportType, ReportNote
         FROM reports
         WHERE BuildingName = ? AND ReportTitle IS NOT NULL`;
     }
@@ -77,6 +77,18 @@ app.get('/buildingDropdown', (req, res)=>{
     })
 });
 
+
+app.get('/reportCount', (req, res)=>{
+    const sqlSelect = 
+    `SELECT BuildingName, COUNT(Reportid) as repCount
+    FROM reports
+    group by BuildingName`;
+    db.query(sqlSelect, [], (err, data)=> {
+        if(err) return res.json(err);
+        return res.json(data);
+    })
+});
+
 app.post('/submitReport', (req, res) => {
     const sql = "INSERT INTO reports (`ReportTitle`, `ReportDate`, `BuildingName`, `ReportType`, `ReportNote`) Values (?, ?, ?, ?, ?)";
     console.log(Object.keys(req.body));
@@ -91,6 +103,16 @@ app.post('/submitReport', (req, res) => {
         return res.json(data);
     })
 });
+
+app.delete('/delete', (req, res) => {
+    const sql = "DELETE FROM reports WHERE Reportid = ?";
+    db.query(sql, [req.query.Reportid], (err, data) => {
+        if(err) return res.json(err);
+        return res.json(data);
+    })
+});
+
+
 
 
 

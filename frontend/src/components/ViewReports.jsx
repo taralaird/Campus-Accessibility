@@ -25,21 +25,21 @@ export default function ViewReports() {
     const [building, setBuilding] = useState(initialBuilding);
     const [reports, setReports] = useState([])
 
+    const [username, setUsername] = useState("");
+    const [password, setPassword] = useState("");
+    const [login, setLogin] = useState(false);
+
     useEffect(() => {
         axios.get("http://localhost:8081/reportByBuilding", {params: {buildingName: building}})
             .then((res) => {
                 const reports = res.data.map(((value) => {
                     return (
-                        <Report reportTitle={value.ReportTitle} buildingName={value.BuildingName} reportType={value.ReportType} issueDetails={value.ReportNote} />
+                        <Report id={value.Reportid} reportTitle={value.ReportTitle} buildingName={value.BuildingName} reportType={value.ReportType} issueDetails={value.ReportNote} />
                     )
                 }))
                 setReports(reports)
     })
 }, [building])
-
-    const [username, setUsername] = useState("");
-    const [password, setPassword] = useState("");
-    const [login, setLogin] = useState(false);
 
     const checkLogin = () => {
         if (username && username === "campusAdmin" ) {
@@ -61,7 +61,8 @@ export default function ViewReports() {
                 <div>
                     <NavMenu/>
                     <h1>Reports</h1>
-
+                    <br />
+                    <br />
                     <Autocomplete disablePortal
                     onChange={(e) => { setBuilding(e.target.outerText) }}
                     id="combo-box-demo"
@@ -70,35 +71,8 @@ export default function ViewReports() {
                     value= {building} 
                     />
                     {reports}
-                    {login? 
-                    <Button onClick={() => {
-                        setLogin(false);
-                        setUsername("");
-                        setPassword("");
-                        }}
-                    >
-                        Logout
-                    </Button> : 
-                    <Form style={{width: "50%", marginLeft: "1%"}}>
-                        <Form.Group className="mb-3">
-                            <Form.Label>Username</Form.Label>
-                            <Form.Control onChange={(e) => {setUsername(e.target.value);}} placeholder="Enter username"/>
-                        </Form.Group>
-                        <Form.Group className="mb-3">
-                            <Form.Label>Password</Form.Label>
-                            <Form.Control onChange={(e) => {setPassword(e.target.value);}} placeholder="Enter password"/>
-                        </Form.Group>
-                        <Button variant="outline-info" onClick={() => {
-                            if (checkLogin()) {
-                                setLogin(true);
-                            }
-                        }}>
-                            Submit
-                        </Button>
-                    </Form>}
-                    <br />
-                    <Report issueDetails={issueDetails} buildingName={"sample building"} reportTitle={"Cafeteria Popcorn Overflow"} reportType={reportType("4")}  />
                     
+                    <br />                    
                 </div>
             </main>
             <Footer />

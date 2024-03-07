@@ -3,7 +3,7 @@ import Toast from 'react-bootstrap/Toast';
 
 export default function BuildingInfo(props) {
     const severity = String(props.severity);
-    const colour = severity.includes("success")? 
+    const colour = severity.includes("info")? 
     "low" : severity.includes("warning")? 
     "moderate": severity.includes("danger")? 
     "severe" : "error";
