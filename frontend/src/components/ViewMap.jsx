@@ -279,12 +279,28 @@ export default function ViewMap() {
                 <div className="map-container">
                     <img className="campus-map" alt={"Campus Map"} src={CampusMap} />
                     <div >{buttons}</div>
-                    <div><Button sz="large" className="returnButton" style={{ "position": "absolute", "top": "95%", "left": "87%", "transform": "translate(0%, 0%)", "background-color": "rgb(75, 160, 181)", "border-color": "rgb(75, 160, 181)", "font-weight": "bold" }}><Link to="/" className="returnButton-link">Contract Map</Link> <ArrowsAngleContract /> </Button>
+                    
+                    <div><Button sz="large" className="returnButton" style={{ "position": "absolute", "top": "78%", "left": "87%", "transform": "translate(0%, 0%)", "background-color": "rgb(75, 160, 181)", "border-color": "rgb(75, 160, 181)", "font-weight": "bold" }}><Link to="/" className="returnButton-link">Contract Map</Link> <ArrowsAngleContract /> </Button>
                     </div>
-                    <div><Button sz="large" className="returnButton" style={{ "position": "absolute", "top": "95%", "left": "75%", "transform": "translate(0%, 0%)", "background-color": "rgb(75, 160, 181)", "border-color": "rgb(75, 160, 181)", "font-weight": "bold" }}><Link to="/createReport" className="returnButton-link">Add Report</Link> <PlusCircle /> </Button>
+                    <div><Button sz="large" className="returnButton" style={{ "position": "absolute", "top": "78%", "left": "75%", "transform": "translate(0%, 0%)", "background-color": "rgb(75, 160, 181)", "border-color": "rgb(75, 160, 181)", "font-weight": "bold" }}><Link to="/createReport" className="returnButton-link">Add Report</Link> <PlusCircle /> </Button>
+                    </div>
+                    <div>
+                    <Toast  style={{"position": "absolute", "top": "83%", "left":"71%", "opacity": "100%"}}>
+                        <Toast.Header closeButton={false} >
+                            <h4 style={{"color": "black"}}>Map Legend</h4>
+                        </Toast.Header>
+                        <Toast.Body class="align-items-center bg-white">
+                            <h6>Report Serverity</h6>
+                            <h6 class="text-info">Blue: Low - 0-1 Reports</h6>
+                            <h6 class="text-warning">Yellow: Moderate - 2-3 Reports</h6>
+                            <h6 class="text-danger">Red: Severe - 4+ Reports</h6>
+                        </Toast.Body>
+                    </Toast>
                     </div>
                 </div>
+                
                 <div className="infoContainer">
+                
                         <Autocomplete disablePortal
                             onChange={(e) => { setBuilding(e.target.outerText) }}
                             id="combo-box-demo"
@@ -302,6 +318,7 @@ export default function ViewMap() {
                     <div className="report">
                         {reportList}
                     </div>
+                    
                 </div>
             </div>
             <Footer />

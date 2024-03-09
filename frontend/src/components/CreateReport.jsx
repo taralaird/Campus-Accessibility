@@ -99,8 +99,8 @@ function CreateReport() {
                             )
                                 .then((res) => console.log(res))
                                 .catch((err) => console.error(err));
-                            
-
+                                window.location.reload();
+                                window.alert("Thank you for filling out a report, it has been added to our database");
                         } else {
                             window.alert(errors);
                         }

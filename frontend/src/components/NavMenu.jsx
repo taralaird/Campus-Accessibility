@@ -21,7 +21,7 @@ function NavMenu(){
             <Button variant="link" className="button"><Link to="/trends" className="button-link">View Trends</Link></Button>
             <Button variant="link" className="button"><Link to="/reports" className="button-link">View Reports</Link></Button>
             <Button variant="link" className="button"><Link to="/predictor" className="button-link">Predictor Model</Link></Button>
-            <Button variant="link" className="button"><Link to="/delete" className="button-link">Delete Reports</Link></Button>
+            <Button variant="link" className="button"><Link to="/delete" className="button-link">Admin Login</Link></Button>
             </ButtonGroup>
             </div>
         </div>

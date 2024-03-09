@@ -38,12 +38,12 @@ app.get('/reportByBuilding', (req, res)=>{
     let sqlSelect = "";
     if (req.query.buildingName === "All") {
         sqlSelect = 
-        `SELECT Reportid, ReportTitle, ReportDate, BuildingName, ReportType, ReportNote
+        `SELECT Reportid, ReportTitle, Date_Format(ReportDate,'%m/%d/%Y %h:%i %p') As Date, BuildingName, ReportType, ReportNote
         FROM reports
         WHERE ReportTitle IS NOT NULL`;    
     } else {
         sqlSelect = 
-        `SELECT Reportid, ReportTitle, ReportDate, BuildingName, ReportType, ReportNote
+        `SELECT Reportid, ReportTitle, Date_Format(ReportDate,'%m/%d/%Y %h:%i %p') As Date, BuildingName, ReportType, ReportNote
         FROM reports
         WHERE BuildingName = ? AND ReportTitle IS NOT NULL`;
     }
@@ -52,6 +52,7 @@ app.get('/reportByBuilding', (req, res)=>{
         return res.json(data);
     })
 });
+
 
 app.get('/infobyBuilding', (req, res)=>{
     const buildingName = req.query.buildingName;
@@ -71,6 +72,18 @@ app.get('/buildingDropdown', (req, res)=>{
     `SELECT BuildingName 
     FROM building_information
     ORDER BY BuildingName ASC`;
+    db.query(sqlSelect, (err, data)=> {
+        if(err) return res.json(err);
+        return res.json(data);
+    })
+});
+
+app.get('/recentReports', (req, res)=>{
+    const sqlSelect = 
+    `SELECT Reportid, ReportTitle,  Date_Format(ReportDate,'%m/%d/%Y %h:%i') As Date , BuildingName, ReportType, ReportNote
+    FROM reports
+    ORDER BY Date Desc
+    LIMIT 3`;
     db.query(sqlSelect, (err, data)=> {
         if(err) return res.json(err);
         return res.json(data);
