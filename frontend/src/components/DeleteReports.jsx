@@ -35,10 +35,10 @@ export default function DeleteReports() {
             })
         }, [])
     return (
-        <div>
+        <body>
             <main>
                 <NavMenu/>
-                <h1>Reports</h1>
+                <h1>Delete Reports</h1>
                     
                 {login ? 
                 <div>
@@ -70,8 +70,8 @@ export default function DeleteReports() {
                 </Form>}
                 </main>
                 <Footer />
-
-            </div>
+               
+            </body>
         
     )
 }

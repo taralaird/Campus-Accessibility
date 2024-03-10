@@ -40,12 +40,15 @@ app.get('/reportByBuilding', (req, res)=>{
         sqlSelect = 
         `SELECT Reportid, ReportTitle, Date_Format(ReportDate,'%m/%d/%Y %h:%i %p') As Date, BuildingName, ReportType, ReportNote
         FROM reports
-        WHERE ReportTitle IS NOT NULL`;    
+        WHERE ReportTitle IS NOT NULL
+        ORDER BY Date Desc`;    
     } else {
         sqlSelect = 
         `SELECT Reportid, ReportTitle, Date_Format(ReportDate,'%m/%d/%Y %h:%i %p') As Date, BuildingName, ReportType, ReportNote
         FROM reports
-        WHERE BuildingName = ? AND ReportTitle IS NOT NULL`;
+        WHERE BuildingName = ? AND ReportTitle IS NOT NULL
+        ORDER BY Date Desc`;
+        
     }
     db.query(sqlSelect,[buildingName], (err, data)=> {
         if(err) return res.json(err);
