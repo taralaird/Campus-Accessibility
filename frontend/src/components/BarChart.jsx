@@ -118,16 +118,17 @@ function BarChart({ data, title, subtitle, note, timePeriod, buildingName }) {
   return (
     <div style={{display: "flex", flexDirection: "row"}}>
       <div>
-        <h1 style={{fontSize: 25, marginLeft: 10}}>{title}</h1>
-        <h2 style={{fontSize: 12, marginRight: 0, marginLeft: 10}}>{subtitle}</h2>
-        <h3 style={{fontSize: 10, marginTop: 0, marginLeft: 10, fontWeight: 'normal'}}>{note}</h3>
+        <h1 style={{fontSize: 25, textAlign: "center"}}>{title}</h1>
+        <h2 style={{fontSize: 12, marginRight: 0, textAlign: "center"}}>{subtitle}</h2>
+        <h3 style={{fontSize: 10, marginTop: 0, textAlign: "center", fontWeight: 'normal'}}>{note}</h3>
         <svg
           ref={ref}
           style={{
+            align: "center",
             height: 500,
             width: "100%",
-            marginRight: "0px",
-            marginLeft: "0px",
+            marginRight: "auto",
+            marginLeft: "auto",
           }}
         >
           <g className="plot-area" />

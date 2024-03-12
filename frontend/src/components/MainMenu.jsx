@@ -8,13 +8,28 @@ import NavMenu from "./NavMenu";
 import Footer from "./Footer";
 import axios from "axios";
 import Report from "./Report";
+import BarChart from "./BarChart";
 
 
 
 
 function MainMenu() {
     const [reports, setReports] = useState([])
+    const [data, setData] = useState([]);
 
+    
+    useEffect(() => {
+        axios.get("http://localhost:8081/reportsByMonth")
+            .then((res, req) => {
+                let tempData = [];
+                for (let i in res.data) {
+                    let xVal = res.data[i].ReportMonth
+                    let temp = {xValue: xVal, w: res.data[i].TotalCount, yValue: 0.5}
+                    tempData.push(temp);
+                }
+                setData(tempData);
+            })
+    }, [])
     useEffect(() => {
         axios.get("http://localhost:8081/recentReports")
             .then((res) => {
@@ -41,10 +56,8 @@ function MainMenu() {
 
                     <div className="newest1">
                         <h2>Newest Trends</h2>
-                        <div>
-                        <div className="image-placeholder">
-                                <p>Image Placeholder</p>
-                            </div>
+                        <div class="text-body" style = {{"background-color": "white", "height": "230px","overflow": "auto"}}>
+                        <BarChart data={data} timePeriod={"Month"} title={"Reports by Month"} subtitle={"For the current year"} note={""} />
                         </div>
                     </div>
                     <div className="newest2">

@@ -105,6 +105,44 @@ app.get('/reportCount', (req, res)=>{
     })
 });
 
+app.get('/reportsByType', (req, res)=>{
+    const sqlSelect = 
+    `SELECT ReportType, COUNT(Reportid) AS TotalCount
+    FROM reports
+    GROUP BY ReportType
+    ORDER BY ReportType`;
+    db.query(sqlSelect, [], (err, data)=> {
+        if(err) return res.json(err);
+        return res.json(data);
+    })
+});
+
+app.get('/top5Buildings', (req, res)=>{
+    const sqlSelect = 
+    `SELECT BuildingName, COUNT(Reportid) AS TotalCount
+    FROM reports
+    GROUP BY BuildingName
+    ORDER BY COUNT(Reportid) DESC
+    LIMIT 5`;
+    db.query(sqlSelect, [], (err, data)=> {
+        if(err) return res.json(err);
+        return res.json(data);
+    })
+});
+
+app.get('/reportsByMonth', (req, res)=>{
+    const sqlSelect = 
+    `SELECT YEAR(ReportDate) AS ReportYear, MONTH(ReportDate) AS ReportMonth, COUNT(Reportid) AS TotalCount
+    FROM reports
+    WHERE year(reportDate) = year(curdate())
+    GROUP BY year(ReportDate), month(ReportDate)
+    ORDER BY month(ReportDate)`;
+    db.query(sqlSelect, [], (err, data)=> {
+        if(err) return res.json(err);
+        return res.json(data);
+    })
+});
+
 app.post('/submitReport', (req, res) => {
     const sql = "INSERT INTO reports (`ReportTitle`, `ReportDate`, `BuildingName`, `ReportType`, `ReportNote`) Values (?, ?, ?, ?, ?)";
     console.log(Object.keys(req.body));
