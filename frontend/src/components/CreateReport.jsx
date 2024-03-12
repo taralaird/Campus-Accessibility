@@ -9,6 +9,7 @@ import { buildingNames } from "../constants/BuildingNames";
 import NavMenu from "./NavMenu";
 import Footer from "./Footer";
 import "../styles.css";
+import axios, {isCancel, AxiosError} from 'axios';
 
 function CreateReport() {
 
@@ -16,8 +17,24 @@ function CreateReport() {
     const [building, setBuilding] = useState(null);
     const [reportType, setReportType] = useState(null);
     const [issueDetails, setIssueDetails] = useState(null);
-
     const names = buildingNames.sort();
+    const [buildingNameList, setBuildingNameList] = useState(names? names : []);
+
+    useEffect(() => {
+        axios.get("http://localhost:8081/buildingDropdown")
+            .then((res) => {
+                let buildingList = [];
+                for (let i=0; i<res?.data?.length; i++) {
+                    if (res && res.data && res.data[i] && res.data[i].BuildingName) {
+                        buildingList.push(res?.data[i]?.BuildingName)
+                    }
+                }
+                let temp = buildingList.sort();
+                setBuildingNameList(temp);
+            })
+            .catch(err => console.err(err));
+    }, [])
+
 
     return (
         <body><main>
@@ -35,7 +52,7 @@ function CreateReport() {
                 <Autocomplete disablePortal
                     onChange={(e) => {setBuilding(e.target.outerText)}}
                     id="combo-box-demo"
-                    options={names}
+                    options={buildingNameList}
                     sx={{ width: 300 }}
                     renderInput={(params) => <TextField {...params} label="Building" />}
                 />
@@ -58,21 +75,32 @@ function CreateReport() {
                 </Form.Group>
                 {/*DB TODO: Get temp values as fields for new report,push to DB*/}
                 <Button variant="info" className="expand-button" style={{"background-color": "rgb(75, 160, 181)","color": "#fff", "border-color": "rgb(75, 160, 181)", "font-weight": "bold" }} onClick={
-                    () => {
+                    async () => {
                         let tempTitle = String(title);
                         let tempBuilding = String(building);
                         let tempReportType = String(reportType);
                         let tempIssueDetails = String(issueDetails);
-                        const json = {
-                            tempTitle,
-                            tempBuilding,
-                            tempReportType,
-                            tempIssueDetails
+                        let d = new Date();
+                        const offset = d.getTimezoneOffset();
+                        d = new Date(d.getTime() - (offset*60000))
+                        const tempTime = d.toISOString().split('T');
+                        const reqBody = {
+                            reportTitle: tempTitle,
+                            reportDate: tempTime[0] + " " + tempTime[1].split(".")[0],
+                            buildingName: tempBuilding,
+                            reportType: tempReportType,
+                            reportNote: tempIssueDetails,
                         };
                         const errors = checkReportErrors(title, building, reportType, issueDetails);
                         if (errors==="none") {
                             // TODO: send json to backend
-                            console.log(json);
+                            await axios.post('http://localhost:8081/submitReport',
+                                {body: {reportTitle: title, reportDate: tempTime[0] + " " + tempTime[1].split(".")[0], buildingName: building, reportType: reportType, reportNote: issueDetails}}
+                            )
+                                .then((res) => console.log(res))
+                                .catch((err) => console.error(err));
+                                window.location.reload();
+                                window.alert("Thank you for filling out a report, it has been added to our database");
                         } else {
                             window.alert(errors);
                         }

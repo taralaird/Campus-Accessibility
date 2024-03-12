@@ -3,10 +3,10 @@ import Toast from 'react-bootstrap/Toast';
 
 export default function BuildingInfo(props) {
     const severity = String(props.severity);
-    const colour = severity.includes("success")? 
-    "low" : severity.includes("warning")? 
-    "moderate": severity.includes("danger")? 
-    "severe" : "error";
+    const colour = severity.includes("info")? 
+    "Low" : severity.includes("warning")? 
+    "Moderate": severity.includes("danger")? 
+    "Severe" : "error";
     
 
     return (
@@ -15,7 +15,7 @@ export default function BuildingInfo(props) {
       <h2 style={{ "background-color": "rgb(75, 160, 181)", "color":"#fff", "font-weight": "bold"}}>{props.buildingName} Information</h2>
       </div>
       <div style={{ "width": "100%",  "overflow":"auto"}}>
-        <h4>{"Severity: " + colour}</h4>
+        <h4>{"Report Severity: " + colour}</h4>
                 <h4>{props.floors? "Floors: "+ Number(props.floors): ""}</h4>
                 <h4>{props.elevators? "Elevators: "+ Number(props.elevators): ""}</h4>
                 <h4>{props.barrierFreeWashrooms? "Barrier Free Washrooms: Yes" : "Barrier Free Washrooms: No"}</h4>

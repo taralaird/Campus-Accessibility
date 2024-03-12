@@ -7,23 +7,22 @@
     || "warning" || "outline-warning" || "danger" || "outline-danger"
     this function is meant to be used when generating props for buttons on the map page
  */
-export default function buttonVariant(count, isOutline=false, greenCutoff=1, yellowCutoff=3) {
+export default function buttonVariant(count, greenCutoff=2, yellowCutoff=4) {
     let reportCount = Number(count);
-    if (isOutline) {
         if (reportCount < greenCutoff && reportCount < yellowCutoff) {
-            return "outline-success";
+            return "outline-info";
         } else if (reportCount < yellowCutoff) {
             return "outline-warning";
         } else {
             return "outline-danger";
         }
-    } else {
+        /*
         if (reportCount < greenCutoff && reportCount < yellowCutoff) {
-            return "success";
+            return "rgb(31,30,81)";
         } else if (reportCount < yellowCutoff) {
-            return "warning";
+            return "rgb(247,236,27)";
         } else {
-            return "danger";
+            return "rgb(236,37,94)";
         }
-    }
+        */
 };
