@@ -44,6 +44,22 @@ function Help() {
             <p>This button takes you to a page that can make predictions on how many issues a building would have 
                 based on the information that you input. </p>
             </div>
+
+            <div style = {{"background": "var(--blue)"}}>
+                <h1 style={{"text-align":"center", "color": "white"}}>Text-to-Speech</h1>
+            </div>
+
+            <div style ={{ "margin": "0% 10% 0%"}}>
+            <p>We recommend the following text-to-speech browser extensions:</p>
+            
+            <h2 style = {{"color": "var(--blue)"}}>Speechify</h2>
+            <p>Speechify is available for Google Chrome, FireFox, and Safari. <a href="https://speechify.com/">Speechify.com</a> </p>
+           
+            <h2 style = {{"color": "var(--blue)"}}>Read Aloud</h2>
+            <p>Read Aloud is available for Google Chrome, FireFox, and Microsoft Edge. 
+                <a href="https://readaloud.app/"> Read Aloud: A Text-to-Speech Voice Reader</a> </p>
+           
+            </div>
             
             
         
