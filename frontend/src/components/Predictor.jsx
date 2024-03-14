@@ -4,9 +4,10 @@ import { Link } from "react-router-dom";
 import NavMenu from "./NavMenu";
 import Form from 'react-bootstrap/Form';
 import "../styles.css";
-
 import Footer from "./Footer";
 import checkPredictorErrors from "../functions/checkPredictorErrors";
+import * as tf from '@tensorflow/tfjs';
+import axios from "axios";
 
 export default function Predictor() {
 
@@ -44,9 +45,9 @@ export default function Predictor() {
                         <Button variant="info" className="expand-button" style={{"background-color": "rgb(75, 160, 181)","color": "#fff", "border-color": "rgb(75, 160, 181)", "font-weight": "bold" }} onClick={() => {
                             let tempNumFloors = Number(numFloors);
                             let tempNumElevators = Number(numElevators);
-                            let tempBarrierFreeWashrooms = Boolean(barrierFreeWashrooms);
-                            let tempGenderNeutralWashrooms = Boolean(genderNeutralWashrooms);
-                            let tempAutomaticButtonEntry = Boolean(automaticButtonEntry);
+                            let tempBarrierFreeWashrooms = Boolean(barrierFreeWashrooms)? 1:0;
+                            let tempGenderNeutralWashrooms = Boolean(genderNeutralWashrooms)? 1:0;
+                            let tempAutomaticButtonEntry = Boolean(automaticButtonEntry)? 1:0;
                             const json = {
                                 tempNumFloors,
                                 tempNumElevators,
@@ -58,7 +59,51 @@ export default function Predictor() {
                                 window.alert("There is an issue with the form.\nEnsure the first two fields have numbers.\nEnsure the first field has a positive number.")
                             } else {
                                 console.log(json);
-                                // TODO: send data to neural net
+                                axios.get("http://localhost:8081/buildingInfoAndCount")
+                                    .then(async (res, req) => {
+                                        const values = []
+                                        const model = tf.sequential();
+                                        model.add(tf.layers.dense({units: 1, inputShape: [1]}));
+                                        model.compile({loss: 'meanSquaredError', optimizer: 'sgd'});
+
+                                        const x = res.data.map((val) => {
+                                            return val.NumberOfFloors
+                                        })
+                                        const x1 = res.data.map((val) => {
+                                            return val.NumberofElevators
+                                        })
+                                        const x2 = res.data.map((val) => {
+                                            return val.AutomaticButtonEntry ? 1:0
+                                        })
+                                        const x3 = res.data.map((val) => {
+                                            return val.BarrierFreeWashrooms ? 1:0
+                                        })
+                                        const x4 = res.data.map((val) => {
+                                            return val.GenderNeutralWashrooms ? 1:0
+                                        })
+                                        const xs = tf.tensor2d(x, [x.length, 1])
+                                        const xs1 = tf.tensor2d(x1, [x1.length, 1])
+                                        const xs2 = tf.tensor2d(x2, [x2.length, 1])
+                                        const xs3 = tf.tensor2d(x3, [x3.length, 1])
+                                        const xs4 = tf.tensor2d(x4, [x4.length, 1])
+                                        const y = res.data.map((val) => {
+                                            return val.RepCount
+                                        })
+                                        const ys = tf.tensor2d(y, [y.length, 1])
+                                        await model.fit(xs, ys, {epochs: 250});
+                                        values.push(Number(model.predict(tf.tensor2d([tempNumFloors], [1, 1])).dataSync()))
+                                        await model.fit(xs1, ys, {epochs: 250})
+                                        values.push(Number(model.predict(tf.tensor2d([tempNumElevators], [1, 1])).dataSync()))
+                                        await model.fit(xs2, ys, {epochs: 250})
+                                        values.push(Number(model.predict(tf.tensor2d([tempAutomaticButtonEntry], [1, 1])).dataSync()))
+                                        await model.fit(xs3, ys, {epochs: 250})
+                                        values.push(Number(model.predict(tf.tensor2d([tempBarrierFreeWashrooms], [1, 1])).dataSync()))
+                                        await model.fit(xs4, ys, {epochs: 250})
+                                        values.push(Number(model.predict(tf.tensor2d([tempGenderNeutralWashrooms], [1, 1])).dataSync()))
+                                        const mean = (values.reduce((partialSum, a) => partialSum + a, 0))/values.length
+                                        alert("This proposed model has the following number of projected issues: " + mean<0? 0:mean.toFixed(2))
+                                        window.location.reload();
+                                    })
                             }
                         }}>
                             Submit
