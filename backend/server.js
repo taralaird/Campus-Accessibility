@@ -143,6 +143,20 @@ app.get('/reportsByMonth', (req, res)=>{
     })
 });
 
+
+app.get('/buildingInfoAndCount', (req, res)=>{
+    const sqlSelect = 
+    `SELECT b.BuildingName, b.NumberOfFloors, b.NumberofElevators, b.BarrierFreeWashrooms, b.GenderNeutralWashrooms, b.AutomaticButtonEntry, COUNT(r.Reportid) as RepCount
+    FROM campus_accessibility.reports as r
+    right join campus_accessibility.building_information as b
+    on r.BuildingName = b.BuildingName
+    GROUP BY BuildingName`;
+    db.query(sqlSelect, [], (err, data)=> {
+        if(err) return res.json(err);
+        return res.json(data);
+    })
+});
+
 app.post('/submitReport', (req, res) => {
     const sql = "INSERT INTO reports (`ReportTitle`, `ReportDate`, `BuildingName`, `ReportType`, `ReportNote`) Values (?, ?, ?, ?, ?)";
     console.log(Object.keys(req.body));
