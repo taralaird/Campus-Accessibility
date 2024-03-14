@@ -12,8 +12,8 @@ app.use(bodyParser.raw());
 const db = mysql.createPool({
     host: "localhost",
     user: "root",
-    password: "Tlaird.1700",
-    database: "campus_accessibility"
+    password: "password",
+    database: "campusAccessibility"
 });
 
 app.get('/', (req, res)=>{
