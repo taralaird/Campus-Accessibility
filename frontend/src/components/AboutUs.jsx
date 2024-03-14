@@ -20,13 +20,19 @@ function AboutUs() {
             <div style = {{"background": "var(--blue)"}}>
             <h1 style={{"text-align":"center", "color": "white"}}>About Us</h1>
             </div>
-            <div style ={{ "margin": "0% 10% 0%"}}>
-            <p>We are a group of 4th year software engineering students with a passion for creating a more accessible campus. 
-                Throughout our years at Western our group and other students have noticed many issues on campus. 
-                But we have never had a great place to report these issues or see other peoples reports. 
-                This is why we have thought of "Campus Accessibility" an application to allow students, staff, and visitors 
-                to view any issues on campus before they get there to plan their route better or to report any issues on campus 
-                to allow for others to have an alert of where not to go in the future.</p >
+            <div style ={{ "margin": "0% 10% 0%", "textAlign": "center"}}>
+            <p>The creators of this website are a group of fifth year software engineering students at Western University. 
+                <br></br>
+                <br></br>
+                Western claims it has a ‘barrier-free’ campus, however, members of the disabled student population have stated 
+                the campus is not as accessible as Western claims, as reported in the Western Gazette. Websites and tools offered 
+                by Western include gaps, are difficult to use, and often only available with a valid UWO account. 
+                We have developed Campus Accessibility (CA) as a tool that can help in areas where the other resources lack. 
+                This web application, open to all, allows users to anonymously report accessibility issues around Western’s campus.
+                <br></br>
+                <br></br>
+                We hope that Campus Accessibility can improve the student experience at Western University. 
+</p >
             <div style = {{"text-align":"center"}}>
                 <div class="inline-block">
                     <img className="ltPic" alt={"ltPic"} src={ltPic} style={{"width":"200px", "height":"200px"}}/>
