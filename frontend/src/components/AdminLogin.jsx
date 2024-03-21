@@ -34,7 +34,7 @@ function AdminLogin() {
                         console.log(json);
                         // TODO: send to backend for verification
                     } else {
-                        window.alert("fill out both username and password")
+                        window.alert("Please fill out both username and password")
                     }
                 }}>
                     Submit

@@ -24,6 +24,7 @@ export default function Predictor() {
                     <NavMenu/>
                     <div style ={{ "margin": "0% 10% 0%"}}>
                     <h1 style ={{"text-align":"center"}}>Predictor</h1>
+                    <h4 style ={{"text-align":"center"}}>Please input the characteristics of a new building project and we will examine our data to estimated the number or reports likely to occur for this project. </h4>
                     <Form>
                         <Form.Group className="mb-3">
                             <Form.Label>Number of Floors</Form.Label>
@@ -101,7 +102,7 @@ export default function Predictor() {
                                         await model.fit(xs4, ys, {epochs: 250})
                                         values.push(Number(model.predict(tf.tensor2d([tempGenderNeutralWashrooms], [1, 1])).dataSync()))
                                         const mean = (values.reduce((partialSum, a) => partialSum + a, 0))/values.length
-                                        alert("This proposed model has the following number of projected issues: " + mean<0? 0:mean.toFixed(2))
+                                        alert("This proposed model has the following number of projected issues: " + String(mean<0? 0:mean.toFixed(2)))
                                         window.location.reload();
                                     })
                             }

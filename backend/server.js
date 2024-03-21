@@ -12,7 +12,7 @@ app.use(bodyParser.raw());
 const db = mysql.createPool({
     host: "localhost",
     user: "root",
-    password: "Tlaird.1700",
+    password: "",
     database: "campus_accessibility"
 });
 

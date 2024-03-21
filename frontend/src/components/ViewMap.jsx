@@ -76,7 +76,7 @@ export default function ViewMap() {
             .then((res) => {
                 const reports = res.data.map(((value) => {
                     return (
-                        <Report id={value.Reportid} reportTitle={value.ReportTitle} buildingName={value.BuildingName} reportType={value.ReportType} issueDetails={value.ReportNote} />
+                        <Report id={value.Reportid} reportTitle={value.ReportTitle} reportDate={value.Date} buildingName={value.BuildingName} reportType={value.ReportType} issueDetails={value.ReportNote} />
                     )
                 }))
                 setReports(reports)
@@ -290,7 +290,7 @@ export default function ViewMap() {
                             <h4 style={{"color": "black"}}>Map Legend</h4>
                         </Toast.Header>
                         <Toast.Body class="align-items-center bg-white">
-                            <h6>Report Serverity</h6>
+                            <h6>Report Severity</h6>
                             <h6 class="text-info">Blue: Low - 0-1 Reports</h6>
                             <h6 class="text-warning">Yellow: Moderate - 2-3 Reports</h6>
                             <h6 class="text-danger">Red: Severe - 4+ Reports</h6>
